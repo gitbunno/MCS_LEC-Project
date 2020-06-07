@@ -7,7 +7,6 @@
     tools:context=".Fragments.ProfileFragment"
     android:background="@color/colorDisabledLight">
 
-    <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:id="@+id/profile_sv"
         android:layout_width="match_parent"
