@@ -20,4 +20,7 @@
     <string name="input_date_of_birth">Date of Birth</string>
     <string name="button_select_date">SELECT DATE</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
