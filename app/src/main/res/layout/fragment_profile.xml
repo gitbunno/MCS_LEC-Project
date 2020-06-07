@@ -89,11 +89,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/profile_tv_account_title"
                     android:orientation="vertical">
+
                     <Button
                         android:id="@+id/profile_btn_edit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         style="@style/CleanButtonInline"
                         android:paddingStart="30dp"
                         android:text="@string/account_edit"
@@ -102,11 +102,11 @@
                         android:id="@+id/profile_btn_asd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         style="@style/CleanButtonInline"
                         android:paddingStart="30dp"
                         android:text="@string/account_password"
                         android:textColor="@color/colorBlack"/>
+
                 </LinearLayout>
 
             </RelativeLayout>
@@ -120,6 +120,9 @@
                 android:text="@string/button_logout"
                 android:textColor="@color/colorWhite"
                 android:background="@color/colorRed"/>
+
         </LinearLayout>
+
     </ScrollView>
+
 </FrameLayout>

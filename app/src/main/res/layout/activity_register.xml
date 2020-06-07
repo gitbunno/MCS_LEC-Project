@@ -8,13 +8,13 @@
     tools:context=".Activities.RegisterActivity">
 
 <!--    <RelativeLayout-->
-<!--        android:id="@+id/id_register_header"-->
+<!--        android:id="@+id/register_header"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:layout_margin="20dp">-->
 
 <!--        <TextView-->
-<!--            android:id="@+id/id_register_title"-->
+<!--            android:id="@+id/register_title"-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:text="@string/activity_register_title"-->
@@ -30,24 +30,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_above="@id/id_register_footer">
+        android:layout_above="@id/register_footer">
 
         <LinearLayout
-            android:id="@+id/id_register_form_main"
+            android:id="@+id/register_form_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/id_register_til_username"
+                android:id="@+id/register_til_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_username"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/id_register_et_username"
+                    android:id="@+id/register_et_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -57,14 +57,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/id_register_til_email"
+                android:id="@+id/register_til_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_email"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/id_register_et_email"
+                    android:id="@+id/register_et_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -74,7 +74,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/id_register_til_password"
+                android:id="@+id/register_til_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_password"
@@ -82,7 +82,7 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/id_register_et_password"
+                    android:id="@+id/register_et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -92,7 +92,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/id_register_til_cpassword"
+                android:id="@+id/register_til_cpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_confirmation_password"
@@ -100,7 +100,7 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/id_register_et_cpassword"
+                    android:id="@+id/register_et_cpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -110,13 +110,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/id_register_til_phone"
+                android:id="@+id/register_til_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/id_register_et_phone"
+                    android:id="@+id/register_et_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/input_phone_number"
@@ -135,33 +135,34 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/input_gender"
-                    android:textSize="18sp"
                     android:layout_gravity="center_vertical"
                     android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@id/id_register_rg"/>
+                    android:layout_toStartOf="@id/register_rg"
+                    android:text="@string/input_gender"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorBlack"/>
 
                 <RadioGroup
-                    android:id="@+id/id_register_rg"
+                    android:id="@+id/register_rg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/id_register_rb_male"
+                        android:id="@+id/register_rb_male"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="20dp"
                         android:text="@string/input_male"
-                        android:buttonTint="@color/colorPrimary"/>
+                        android:buttonTint="@color/colorGreen"/>
 
                     <RadioButton
-                        android:id="@+id/id_register_rb_female"
+                        android:id="@+id/register_rb_female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/input_female"
-                        android:buttonTint="@color/colorPrimary"/>
+                        android:buttonTint="@color/colorGreen"/>
 
                 </RadioGroup>
 
@@ -173,23 +174,24 @@
                 android:padding="4dp">
 
                 <TextView
-                    android:id="@+id/id_register_tv_date"
+                    android:id="@+id/register_tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/register_btn_date"
                     android:text="@string/input_date_of_birth"
                     android:textSize="18sp"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@id/id_register_btn_date"/>
+                    android:textColor="@color/colorBlack"/>
 
                 <Button
-                    android:id="@+id/id_register_btn_date"
+                    android:id="@+id/register_btn_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:background="@color/colorGreen"
-                    android:text="@string/button_select_date"
                     android:paddingHorizontal="20dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="@string/button_select_date"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"/>
 
@@ -200,7 +202,7 @@
     </ScrollView>
 
     <LinearLayout
-        android:id="@+id/id_register_footer"
+        android:id="@+id/register_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -209,12 +211,12 @@
         android:layout_margin="20dp">
 
         <Button
-            android:id="@+id/id_register_btn_register"
+            android:id="@+id/register_btn_register"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="@string/button_register"
             android:textSize="16sp"
-            android:background="@color/colorGreen"
+            android:background="@drawable/rounded_button"
             android:textColor="@android:color/white"
             android:textStyle="bold"/>
 
