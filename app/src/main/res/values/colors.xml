@@ -4,9 +4,11 @@
     <color name="colorPrimaryDark">#027B3B</color>
     <color name="colorAccent">#8AB928</color>
     <color name="colorDisabled">#AAA</color>
+    <color name="colorDisabledLight">#DDD</color>
     <color name="colorGreen">#027B3B</color>
     <color name="colorLightGreen">#8AB928</color>
     <color name="colorLighterGreen">#EEFFC7</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorRed">#C33</color>
+    <color name="colorBlack">#000</color>
 </resources>

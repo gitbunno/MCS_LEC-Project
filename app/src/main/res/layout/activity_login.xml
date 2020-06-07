@@ -8,15 +8,16 @@
 
 
     <Button
-        android:id="@+id/login_btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="Register"/>
-    <Button
         android:id="@+id/login_btn_login"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="Login"/>
+        android:text="@string/button_login"/>
+    <Button
+        android:id="@+id/login_btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_btn_login"
+
+        android:text="@string/button_register"/>
 </RelativeLayout>

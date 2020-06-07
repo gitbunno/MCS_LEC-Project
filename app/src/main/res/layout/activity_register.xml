@@ -51,9 +51,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@android:color/black"
                     android:drawableStart="@drawable/ic_person_outline_black_24dp"
-                    android:drawablePadding="6dp"/>
+                    style="@style/TIForm"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,9 +68,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@android:color/black"
-                    android:drawableStart="@drawable/ic_person_outline_black_24dp"
-                    android:drawablePadding="6dp"/>
+                    android:drawableStart="@drawable/ic_mail_outline_black_24dp"
+                    style="@style/TIForm"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,9 +86,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/black"
                     android:drawableStart="@drawable/ic_lock_outline_black_24dp"
-                    android:drawablePadding="6dp"/>
+                    style="@style/TIForm"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,9 +104,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/black"
                     android:drawableStart="@drawable/ic_lock_outline_black_24dp"
-                    android:drawablePadding="6dp"/>
+                    style="@style/TIForm"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,7 +123,7 @@
                     android:inputType="number"
                     android:textColor="@android:color/black"
                     android:drawableStart="@drawable/ic_phone_black_24dp"
-                    android:drawablePadding="6dp"/>
+                    style="@style/TIForm"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

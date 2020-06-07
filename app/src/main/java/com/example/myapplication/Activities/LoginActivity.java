@@ -11,18 +11,18 @@ import com.example.myapplication.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button login, register;
+    Button btnLogin, btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        login = findViewById(R.id.login_btn_login);
-        login.setOnClickListener(loginListener);
+        btnLogin = findViewById(R.id.login_btn_login);
+        btnLogin.setOnClickListener(loginListener);
 
-        register = findViewById(R.id.login_btn_register);
-        login.setOnClickListener(registerListener);
+        btnRegister = findViewById(R.id.login_btn_register);
+        btnRegister.setOnClickListener(registerListener);
 
     }
 
@@ -30,8 +30,9 @@ public class LoginActivity extends AppCompatActivity {
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    if(validate()){
+                        finish();
+                    }
                 }
             };
 
@@ -43,4 +44,10 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             };
+
+    private boolean validate(){
+        boolean valid = true;
+
+        return valid;
+    }
 }

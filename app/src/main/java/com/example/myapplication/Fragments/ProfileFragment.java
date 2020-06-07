@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.myapplication.Activities.LoginActivity;
 import com.example.myapplication.R;
@@ -26,6 +27,7 @@ public class ProfileFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     Button btnLogin;
+    ImageView imageView;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -69,6 +71,10 @@ public class ProfileFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
         btnLogin = v.findViewById(R.id.profile_btn_login);
+        btnLogin.setOnClickListener(loginListener);
+
+        imageView = v.findViewById(R.id.profile_img);
+        imageView.setClipToOutline(true);
 
         return v;
     }

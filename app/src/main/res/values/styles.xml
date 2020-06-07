@@ -11,4 +11,34 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="CleanButton">
+        <item name="android:padding">10dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="CleanButtonInline" parent="Widget.AppCompat.EditText">
+        <item name="android:padding">10dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/textlines</item>
+    </style>
+    <style name="CleanContainer">
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+    <style name="TVTitle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+    <style name="TIForm">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:drawablePadding">6dp</item>
+    </style>
+
 </resources>
