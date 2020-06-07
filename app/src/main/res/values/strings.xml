@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MoneyMan</string>
+
+    <string name="button_register">Register</string>
+    <string name="button_login">Login</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_wallet">Wallet</string>
+    <string name="menu_transactions">Transactions</string>
+    <string name="menu_profile">Profile</string>
+
+    <string name="input_username">Username</string>
+    <string name="input_email">E-mail</string>
+    <string name="input_password">Password</string>
+    <string name="input_confirmation_password">Confirmation Password</string>
+    <string name="input_phone_number">Phone Number</string>
+    <string name="input_gender">Gender</string>
+    <string name="input_male">Male</string>
+    <string name="input_female">Female</string>
+    <string name="input_date_of_birth">Date of Birth</string>
+    <string name="button_select_date">SELECT DATE</string>
+
+</resources>
