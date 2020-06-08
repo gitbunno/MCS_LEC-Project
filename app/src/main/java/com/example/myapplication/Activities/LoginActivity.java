@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView btnRegister;
     EditText txtEmail, txtPassword;
     TextInputLayout tilEmail, tilPassword;
+    ProgressDialog progressDialog;
 
     GoogleSignInClient mgGoogleSignInClient;
     SignInButton sgnGoogle;
@@ -101,6 +103,17 @@ public class LoginActivity extends AppCompatActivity {
 
             boolean valid = true;
 
+            //Nyalain disini (Progress bar)
+            progressDialog = new ProgressDialog(LoginActivity.this);
+            //Show Dialog
+            progressDialog.show();
+            //Set Content View
+            progressDialog.setContentView(R.layout.progress_dialog);
+            //Set Transparent Background
+            progressDialog.getWindow().setBackgroundDrawableResource(
+                    android.R.color.transparent
+            );
+
             if (email.isEmpty()){
                 valid = false;
                 tilEmail.setError("Email must be filled");
@@ -121,6 +134,9 @@ public class LoginActivity extends AppCompatActivity {
             if(!valid) return;
 
             firebaseAuthNormal(email, password);
+
+            //Matiin progress bar
+            progressDialog.dismiss();
         }
     };
 
