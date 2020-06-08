@@ -43,4 +43,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'androidx.navigation:navigation-fragment:2.2.2'
     implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'com.google.firebase:firebase-firestore:21.4.3'
 }
