@@ -30,7 +30,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/register_til_password"
+            android:id="@+id/login_til_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -38,7 +38,7 @@
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/register_et_password"
+                android:id="@+id/login_et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -82,6 +82,14 @@
             android:textAlignment="center"
             android:textColor="@color/colorGreen"/>
 
+<<<<<<< HEAD
+=======
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/login_sgn_google"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+>>>>>>> firebase
     </LinearLayout>
 
 </RelativeLayout>

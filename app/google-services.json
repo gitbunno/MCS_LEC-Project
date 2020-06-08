@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "81844064974",
+    "firebase_url": "https://mcs-lec.firebaseio.com",
+    "project_id": "mcs-lec",
+    "storage_bucket": "mcs-lec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81844064974:android:b9cd26c80861175b6b769f",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81844064974-8itqailcu1nqokent648e6nm0ookpuls.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "16ad1a8988514f2dcd7d003f62c168f4c24fdaf1"
+          }
+        },
+        {
+          "client_id": "81844064974-bn59i8b64d388lb83v7q8u43kg0ptb6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCny2lFn97YIpWO2GW8nXmTJ_qYwIox0ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81844064974-bn59i8b64d388lb83v7q8u43kg0ptb6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
