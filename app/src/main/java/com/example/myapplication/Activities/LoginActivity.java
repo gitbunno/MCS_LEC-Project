@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                 tilEmail.setError("Email must be filled");
             } else if (!validEmail(email)) {
                 valid = false;
-                tilEmail.setError("Email is invalid");
+                tilEmail.setError("Email is invalid, the accepted format is something like name@email.com");
             } else {
                 tilEmail.setError(null);
             }

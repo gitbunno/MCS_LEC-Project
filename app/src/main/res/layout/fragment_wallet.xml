@@ -7,25 +7,24 @@
     tools:context=".Activities.MainActivity">
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/wallet_tv_greeting"
         android:layout_marginTop="10pt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16pt"
-        android:text="Hello, Calvin"
-        android:gravity="center"
-        />
+        android:text="@string/profile_greeting"
+        android:gravity="center"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card1"
-        android:layout_below="@id/name"
+        android:layout_below="@id/wallet_tv_greeting"
         android:layout_marginTop="10pt"
         android:layout_width="match_parent"
         android:layout_height="50pt"
         app:cardCornerRadius="8pt"
         android:layout_marginLeft="10pt"
-        android:layout_marginRight="10pt"
-        >
+        android:layout_marginRight="10pt">
+
         <LinearLayout
             android:background="@drawable/background2"
             android:layout_width="match_parent"
@@ -51,8 +50,8 @@
                 android:gravity="center"
                 />
 
-
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -63,13 +62,14 @@
         android:layout_height="50pt"
         app:cardCornerRadius="8pt"
         android:layout_marginLeft="10pt"
-        android:layout_marginRight="10pt"
-        >
+        android:layout_marginRight="10pt">
+
         <LinearLayout
             android:background="@drawable/background4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:textStyle="bold"
                 android:textColor="#ffff"
@@ -78,8 +78,8 @@
                 android:layout_height="wrap_content"
                 android:text="Your Debt:"
                 android:textSize="10pt"
-                android:gravity="center"
-                />
+                android:gravity="center"/>
+
             <TextView
                 android:textColor="#ffff"
                 android:textStyle="bold"
@@ -87,26 +87,10 @@
                 android:layout_height="wrap_content"
                 android:text="IDR 2,000,000"
                 android:textSize="16pt"
-                android:gravity="center"
-                />
-
+                android:gravity="center"/>
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navbar">
-
-    </FrameLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/navmenu"
-        android:background="?android:attr/windowBackground"/>
 </RelativeLayout>

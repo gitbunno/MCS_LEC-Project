@@ -30,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EditActivity extends AppCompatActivity {
 
+    TextInputLayout tilUsername, tilPassword, tilConfirm;
     EditText etUsername, etPassword, etConfirm;
     Button btnConfirm, btnCancel;
     FirebaseAuth auth;
@@ -55,38 +56,50 @@ public class EditActivity extends AppCompatActivity {
         btnConfirm.setOnClickListener(confirmListener);
         btnCancel.setOnClickListener(cancelListener);
 
+        tilUsername = findViewById(R.id.register_til_username);
+        tilPassword = findViewById(R.id.edit_til_password);
+        tilConfirm = findViewById(R.id.edit_til_cpassword);
     }
 
     private View.OnClickListener confirmListener =
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String username = etUsername.getText().toString();
-                    String password = etPassword.getText().toString();
+                    String newUsername = etUsername.getText().toString();
+                    String newPassword = etPassword.getText().toString();
                     String confirm = etConfirm.getText().toString();
 
-                    if (username.isEmpty()) {
-                        //error message username can't be empty <- minta bikin error message
+                    String oldPassword = "password"; //ganti
+
+                    boolean valid = true, updatePassword = false;
+
+                    if(!newPassword.isEmpty()){
+                        if(newPassword.length()<8){
+                            tilPassword.setError("New Password must be 8 digits or more");
+                        } else {
+                            tilPassword.setError(null);
+                            updatePassword = true;
+                        }
+                    } else {
+                        tilPassword.setError(null);
+                    }
+
+                    if(confirm.isEmpty()) {
+                        tilConfirm.setError("Confirmation Password must be filled");
                         return;
+                    } else if(!confirm.equals(oldPassword)){
+                        tilConfirm.setError("Wrong Password");
+                        return;
+                    } else {
+                        if(updatePassword){
+                            user.updatePassword(newPassword);
+                        }
+                        tilConfirm.setError(null);
                     }
 
-                    if (!password.isEmpty() || !confirm.isEmpty()) {
-
-                        if (password.length() < 8) {
-                            //password not long enough error <- minta bikin error message
-                            return;
-                        }
-
-                        if (!password.equals(confirm)) {
-                            //password not same error <- minta bikin error message
-                            return;
-                        }
-
-                        user.updatePassword(password);
-                    }
 
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(username)
+                            .setDisplayName(newUsername)
                             .build();
                     user.updateProfile(profileChangeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

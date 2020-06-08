@@ -30,7 +30,8 @@
                 android:id="@+id/home_rv_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_account">
+                tools:listitem="@layout/item_account"
+                tools:itemCount="5">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -96,6 +97,16 @@
             android:textColor="@color/colorBlack"
             style="@style/TVTitle"/>
 
+        <TextView
+            android:id="@+id/home_history_noitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/home_history_title"
+            android:text="@string/no_transaction"
+            android:gravity="center"
+            android:textColor="@color/colorBlack"
+            style="@style/CleanButtonInline"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,7 +117,8 @@
                 android:id="@+id/home_rv_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_transaction">
+                tools:listitem="@layout/item_transaction"
+                tools:itemCount="5">
 
             </androidx.recyclerview.widget.RecyclerView>
 
