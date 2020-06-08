@@ -1,127 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.ProfileFragment"
-    android:background="@color/colorDisabledLight">
+    android:id="@+id/profile_sv"
+    android:background="@color/colorDisabledLight"
+    android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/profile_sv"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            style="@style/CleanContainer">
+
+            <TextView
+                android:id="@+id/profile_tv_profile_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_title"
+                android:textColor="@color/colorBlack"
+                style="@style/TVTitle"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/profile_layout_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/profile_tv_profile_title"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="40dp">
+
+                <ImageView
+                    android:id="@+id/profile_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bunnocrop"/>
+            </androidx.cardview.widget.CardView>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/CleanContainer">
-
+                android:layout_height="80dp"
+                android:layout_toEndOf="@id/profile_layout_img"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="20dp"
+                android:paddingVertical="12dp"
+                android:layout_below="@id/profile_tv_profile_title">
                 <TextView
-                    android:id="@+id/profile_tv_profile_title"
+                    android:id="@+id/profile_tv_greeting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_greeting"
+                    android:textColor="@color/colorBlack"/>
+                <TextView
+                    android:id="@+id/profile_tv_balance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/profile_email"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/CleanContainer">
+
+            <TextView
+                    android:id="@+id/profile_tv_account_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/profile_title"
+                    android:text="@string/account_title"
                     android:textColor="@color/colorBlack"
                     style="@style/TVTitle"/>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/profile_layout_img"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_below="@id/profile_tv_profile_title"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="20dp"
-                    app:cardCornerRadius="40dp">
-
-                    <ImageView
-                        android:id="@+id/profile_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/bunnocrop"/>
-                </androidx.cardview.widget.CardView>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_toEndOf="@id/profile_layout_img"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginHorizontal="20dp"
-                    android:paddingVertical="12dp"
-                    android:layout_below="@id/profile_tv_profile_title">
-                    <TextView
-                        android:id="@+id/profile_tv_greeting"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/profile_greeting"
-                        android:textColor="@color/colorBlack"/>
-                    <TextView
-                        android:id="@+id/profile_tv_balance"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:text="@string/profile_email"/>
-                </RelativeLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/CleanContainer">
+                android:layout_below="@id/profile_tv_account_title"
+                android:orientation="vertical">
 
-                <TextView
-                        android:id="@+id/profile_tv_account_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/account_title"
-                        android:textColor="@color/colorBlack"
-                        style="@style/TVTitle"/>
-
-                <LinearLayout
+                <Button
+                    android:id="@+id/profile_btn_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/profile_tv_account_title"
-                    android:orientation="vertical">
+                    style="@style/CleanButtonInline"
+                    android:paddingStart="30dp"
+                    android:text="@string/account_edit"
+                    android:textColor="@color/colorBlack"/>
+                <Button
+                    android:id="@+id/profile_btn_asd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/CleanButtonInline"
+                    android:paddingStart="30dp"
+                    android:text="@string/account_password"
+                    android:textColor="@color/colorBlack"/>
 
-                    <Button
-                        android:id="@+id/profile_btn_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/CleanButtonInline"
-                        android:paddingStart="30dp"
-                        android:text="@string/account_edit"
-                        android:textColor="@color/colorBlack"/>
-                    <Button
-                        android:id="@+id/profile_btn_asd"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/CleanButtonInline"
-                        android:paddingStart="30dp"
-                        android:text="@string/account_password"
-                        android:textColor="@color/colorBlack"/>
+            </LinearLayout>
 
-                </LinearLayout>
+        </RelativeLayout>
 
-            </RelativeLayout>
+        <Button
+            android:id="@+id/profile_btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            style="@style/CleanButton"
+            android:background="@drawable/rounded_button_red"
+            android:text="@string/button_logout"
+            android:textColor="@color/colorWhite"/>
 
-            <Button
-                android:id="@+id/profile_btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
-                style="@style/CleanButton"
-                android:background="@drawable/rounded_button_red"
-                android:text="@string/button_logout"
-                android:textColor="@color/colorWhite"/>
+    </LinearLayout>
 
-        </LinearLayout>
-
-    </ScrollView>
-
-</FrameLayout>
+</ScrollView>
