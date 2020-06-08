@@ -97,7 +97,6 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/input_confirmation_password"
                 app:passwordToggleEnabled="true"
-                app:counterEnabled="true"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText

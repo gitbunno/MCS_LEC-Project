@@ -73,8 +73,6 @@
                 android:layout_height="wrap_content"
                 style="@style/CleanButton"
                 android:background="@color/colorWhite"
-                android:paddingStart="30dp"
-                android:paddingEnd="0dp"
                 android:text="@string/home_balance_title"
                 android:textSize="30sp"
                 android:textColor="@color/colorBlack"/>

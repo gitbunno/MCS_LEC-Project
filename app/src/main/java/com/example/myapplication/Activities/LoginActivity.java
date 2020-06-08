@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView btnRegister;
     EditText txtEmail, txtPassword;
+    TextInputLayout tilEmail, tilPassword;
 
     GoogleSignInClient mgGoogleSignInClient;
     SignInButton sgnGoogle;
@@ -65,6 +67,9 @@ public class LoginActivity extends AppCompatActivity {
         mgGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         sgnGoogle.setOnClickListener(googleListener);
 
+        tilEmail = findViewById(R.id.login_til_email);
+        tilPassword = findViewById(R.id.login_til_password);
+
         txtEmail = findViewById(R.id.login_et_email);
         txtPassword = findViewById(R.id.login_et_password);
 
@@ -76,29 +81,57 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private View.OnClickListener loginListener =
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String email = txtEmail.getText().toString();
-                    String password = txtPassword.getText().toString();
-                    if (email.isEmpty() || password.isEmpty()) {
-                        Toast.makeText(LoginActivity.this, "Please insert validation", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    firebaseAuthNormal(email, password);
-                }
-            };
+    private boolean validEmail(String email){
+        if(!email.contains("@") || email.startsWith("@")) return false;
 
-    private View.OnClickListener registerListener =
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            };
+        int index = email.indexOf("@");
+        email = email.substring(index+1);
+
+        if(email.isEmpty() || email.contains("@") || !email.contains(".") || email.endsWith("."))
+            return false;
+
+        return true;
+    }
+
+    private View.OnClickListener loginListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String email = txtEmail.getText().toString();
+            String password = txtPassword.getText().toString();
+
+            boolean valid = true;
+
+            if (email.isEmpty()){
+                valid = false;
+                tilEmail.setError("Email must be filled");
+            } else if (!validEmail(email)) {
+                valid = false;
+                tilEmail.setError("Email is invalid");
+            } else {
+                tilEmail.setError(null);
+            }
+
+            if (password.isEmpty()){
+                valid = false;
+                tilPassword.setError("Password must be filled");
+            } else {
+                tilPassword.setError(null);
+            }
+
+            if(!valid) return;
+
+            firebaseAuthNormal(email, password);
+        }
+    };
+
+    private View.OnClickListener registerListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    };
 
     private View.OnClickListener googleListener = new View.OnClickListener() {
         @Override
@@ -161,11 +194,5 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    private boolean validate(){
-        boolean valid = true;
-
-        return valid;
     }
 }
