@@ -74,9 +74,9 @@ public class WalletFragment extends Fragment {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        txtGreetings.findViewById(R.id.wallet_tv_greeting);
+        txtGreetings = v.findViewById(R.id.wallet_tv_greeting);
 
-
+        txtGreetings.setText("Hello, " + user.getDisplayName());
 
         return v;
     }

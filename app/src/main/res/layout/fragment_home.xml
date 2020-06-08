@@ -67,18 +67,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/home_balance_title"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="10dp">
 
-            <Button
-                android:id="@+id/home_balance_amount"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                style="@style/CleanButton"
-                android:background="@drawable/rounded_corner"
-                android:text="@string/home_balance_title"
-                android:textSize="30sp"
-                android:textColor="@color/colorDarkGreen"/>
+                android:id="@+id/card1">
+
+                <LinearLayout
+                    android:background="@drawable/rounded_corner"
+                    android:backgroundTint="@color/colorLighterGreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textColor="@color/colorGreen"
+                        android:layout_marginTop="5pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Your Balance:"
+                        android:textStyle="bold"
+                        android:textSize="10pt"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:textColor="@color/colorDarkGreen"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="IDR 10,000,000"
+                        android:textSize="16pt"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -98,7 +125,7 @@
             style="@style/TVTitle"/>
 
         <TextView
-            android:id="@+id/home_history_noitem"
+            android:id="@+id/home_history_tv_noitem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/home_history_title"

@@ -4,75 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.LoginActivity"
-    android:gravity="center">
+    tools:context=".Activities.AddAccountActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="20dp">
+        android:padding="20dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_til_email"
+            android:id="@+id/add_til_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/input_email"
+            android:hint="@string/account_name"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_et_email"
+                android:id="@+id/add_et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:drawableStart="@drawable/ic_mail_outline_black_24dp"
+                android:drawableStart="@drawable/ic_person_black_24dp"
                 style="@style/TIForm"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_til_password"
+            android:id="@+id/add_til_balance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            app:passwordToggleEnabled="true"
+            android:hint="@string/home_balance_title"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_et_password"
+                android:id="@+id/add_et_balance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:drawableStart="@drawable/ic_lock_outline_black_24dp"
+                android:inputType="number"
+                android:drawableStart="@drawable/ic_account_balance_wallet_black_24dp"
                 style="@style/TIForm"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/login_btn_login"
+            android:id="@+id/add_btn_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/button_login"
+            android:text="@string/button_confirm"
             android:textColor="@color/colorWhite"
             android:background="@drawable/rounded_button"
             style="@style/CleanButton"/>
 
-        <TextView
-            android:id="@+id/login_btn_register"
+        <Button
+            android:id="@+id/add_btn_cancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/tv_register"
-            android:textAlignment="center"
-            android:textColor="@color/colorGreen"/>
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/login_sgn_google"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:text="@string/button_cancel"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/colorDisabled"
+            style="@style/CleanButton"/>
 
     </LinearLayout>
 

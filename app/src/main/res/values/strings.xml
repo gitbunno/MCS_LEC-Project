@@ -40,6 +40,7 @@
     <string name="account_title">Account</string>
     <string name="account_edit">Edit Profile</string>
     <string name="account_password">Change Password</string>
-
+    <string name="account_name">Account Name</string>
+    <string name="account_balance">Account Balance</string>
 
 </resources>

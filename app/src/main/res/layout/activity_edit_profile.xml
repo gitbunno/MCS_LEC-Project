@@ -75,6 +75,7 @@
             android:textColor="@color/colorWhite"
             android:background="@drawable/rounded_button"
             style="@style/CleanButton"/>
+
         <Button
             android:id="@+id/edit_btn_cancel"
             android:layout_width="match_parent"
