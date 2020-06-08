@@ -18,12 +18,13 @@
     <string name="home_account_add">Add Account</string>
     <string name="home_balance_title">Balance</string>
     <string name="home_history_title">History</string>
+    <string name="no_transaction">You haven\'t had any transactions yet</string>
 
     <string name="input_username">Username</string>
     <string name="input_newname">New Username</string>
     <string name="input_email">E-mail</string>
     <string name="input_password">Password</string>
-    <string name="input_newpassword">New Password</string>
+    <string name="input_newpassword">New Password (Optional)</string>
     <string name="input_confirmation_password">Confirmation Password</string>
     <string name="input_phone_number">Phone Number</string>
     <string name="input_gender">Gender</string>
@@ -33,12 +34,13 @@
     <string name="button_select_date">SELECT DATE</string>
 
     <string name="profile_title">Profile</string>
-    <string name="profile_greeting">Hello, xxx</string>
+    <string name="profile_greeting">Hello, xx</string>
     <string name="profile_email">Email</string>
 
     <string name="account_title">Account</string>
     <string name="account_edit">Edit Profile</string>
     <string name="account_password">Change Password</string>
-
+    <string name="account_name">Account Name</string>
+    <string name="account_balance">Account Balance</string>
 
 </resources>

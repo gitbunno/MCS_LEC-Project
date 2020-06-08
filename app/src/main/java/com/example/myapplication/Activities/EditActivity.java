@@ -1,5 +1,6 @@
 package com.example.myapplication.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,10 +31,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EditActivity extends AppCompatActivity {
 
+    TextInputLayout tilUsername, tilPassword, tilConfirm;
     EditText etUsername, etPassword, etConfirm;
     Button btnConfirm, btnCancel;
     FirebaseAuth auth;
     FirebaseUser user;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,10 @@ public class EditActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
+
+        tilUsername = findViewById(R.id.register_til_username);
+        tilPassword = findViewById(R.id.edit_til_password);
+        tilConfirm = findViewById(R.id.edit_til_cpassword);
 
         etUsername = findViewById(R.id.edit_et_name);
         etPassword = findViewById(R.id.edit_et_password);
@@ -54,54 +61,73 @@ public class EditActivity extends AppCompatActivity {
 
         btnConfirm.setOnClickListener(confirmListener);
         btnCancel.setOnClickListener(cancelListener);
-
     }
+    private View.OnClickListener confirmListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String newUsername = etUsername.getText().toString();
+            String newPassword = etPassword.getText().toString();
+            String confirm = etConfirm.getText().toString();
 
-    private View.OnClickListener confirmListener =
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String username = etUsername.getText().toString();
-                    String password = etPassword.getText().toString();
-                    String confirm = etConfirm.getText().toString();
+            String oldPassword = "password"; //ganti
 
-                    if (username.isEmpty()) {
-                        //error message username can't be empty <- minta bikin error message
-                        return;
-                    }
+            boolean valid = true, updatePassword = false;
 
-                    if (!password.isEmpty() || !confirm.isEmpty()) {
+            //Nyalain disini (Progress bar)
+            progressDialog = new ProgressDialog(EditActivity.this);
+            //Show Dialog
+            progressDialog.show();
+            //Set Content View
+            progressDialog.setContentView(R.layout.progress_dialog);
+            //Set Transparent Background
+            progressDialog.getWindow().setBackgroundDrawableResource(
+                    android.R.color.transparent
+            );
 
-                        if (password.length() < 8) {
-                            //password not long enough error <- minta bikin error message
-                            return;
-                        }
-
-                        if (!password.equals(confirm)) {
-                            //password not same error <- minta bikin error message
-                            return;
-                        }
-
-                        user.updatePassword(password);
-                    }
-                    UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(username)
-                            .build();
-                    user.updateProfile(profileChangeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) finish();
-                        }
-                    });
+            if(!newPassword.isEmpty()){
+                if(newPassword.length()<8){
+                    tilPassword.setError("New Password must be 8 digits or more");
+                } else {
+                    tilPassword.setError(null);
+                    updatePassword = true;
                 }
-            };
+            } else {
+                tilPassword.setError(null);
+            }
 
-    private View.OnClickListener cancelListener =
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
+            if(confirm.isEmpty()) {
+                tilConfirm.setError("Confirmation Password must be filled");
+                return;
+            } else if(!confirm.equals(oldPassword)){
+                tilConfirm.setError("Wrong Password");
+                return;
+            } else {
+                if(updatePassword){
+                    user.updatePassword(newPassword);
                 }
-            };
+                tilConfirm.setError(null);
+            }
+
+            //Matiin progress bar
+            progressDialog.dismiss();
+
+            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                    .setDisplayName(newUsername)
+                    .build();
+            user.updateProfile(profileChangeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) finish();
+                }
+            });
+        }
+    };
+
+    private View.OnClickListener cancelListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            finish();
+        }
+    };
 
 }

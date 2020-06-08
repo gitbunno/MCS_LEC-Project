@@ -8,9 +8,11 @@
     <color name="colorDarkGreen">#004E25</color>
     <color name="colorGreen">#027B3B</color>
     <color name="colorLightGreen">#8AB928</color>
-    <color name="colorLighterGreen">#B1FF00</color>
+    <color name="colorLighterGreen">#D2FF6B</color>
     <color name="colorWhite">#FFF</color>
+    <color name="colorDarkRed">#A22</color>
     <color name="colorRed">#C33</color>
     <color name="colorLightRed">#E55</color>
+    <color name="colorLighterRed">#EAA</color>
     <color name="colorBlack">#000</color>
 </resources>

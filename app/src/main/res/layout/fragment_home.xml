@@ -30,7 +30,8 @@
                 android:id="@+id/home_rv_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_account">
+                tools:listitem="@layout/item_account"
+                tools:itemCount="5">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -66,18 +67,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/home_balance_title"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="10dp">
 
-            <Button
-                android:id="@+id/home_balance_amount"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                style="@style/CleanButton"
-                android:background="@drawable/rounded_corner"
-                android:text="@string/home_balance_title"
-                android:textSize="30sp"
-                android:textColor="@color/colorDarkGreen"/>
+                android:id="@+id/card1">
+
+                <LinearLayout
+                    android:background="@drawable/rounded_corner"
+                    android:backgroundTint="@color/colorLighterGreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textColor="@color/colorGreen"
+                        android:layout_marginTop="5pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Your Balance:"
+                        android:textStyle="bold"
+                        android:textSize="10pt"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/home_balance"
+                        android:textColor="@color/colorDarkGreen"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16pt"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -85,7 +114,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         style="@style/CleanContainer">
 
         <TextView
@@ -96,17 +125,28 @@
             android:textColor="@color/colorBlack"
             style="@style/TVTitle"/>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/home_history_tv_noitem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/home_history_title"
+            android:text="@string/no_transaction"
+            android:gravity="center"
+            android:textColor="@color/colorBlack"
+            style="@style/CleanButtonInline"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_below="@id/home_history_title"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_rv_history"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_transaction">
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_transaction"
+                tools:itemCount="5">
 
             </androidx.recyclerview.widget.RecyclerView>
 

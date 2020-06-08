@@ -4,11 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.MainActivity">
+    tools:context=".Activities.MainActivity"
+    android:background="@color/colorDisabledLight">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_transaction"/>
+        android:orientation="vertical"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/transactions_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_transactions"
+            style="@style/TVTitle"/>
+
+        <TextView
+            android:id="@+id/transactions_tv_noitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/transactions_tv_title"
+            android:text="@string/no_transaction"
+            android:gravity="center"
+            android:textColor="@color/colorBlack"
+            style="@style/CleanButtonInline"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_transaction"
+            android:layout_below="@id/transactions_tv_title"/>
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_add_black_24dp"
+        android:tint="@color/colorDarkGreen"
+        android:backgroundTint="@color/colorLightGreen"/>
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.myapplication.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +27,8 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth auth;
     EditText txtUsername, txtEmail, txtPassword, txtConfirm;
     Button btnRegister;
+    TextInputLayout tilUsername, tilEmail, tilPassword, tilConfirm;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,26 +53,87 @@ public class RegisterActivity extends AppCompatActivity {
     private View.OnClickListener registerListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            String username = txtUsername.getText().toString();
             String email = txtEmail.getText().toString();
             String password = txtPassword.getText().toString();
-            String username = txtUsername.getText().toString();
+            String confirm = txtConfirm.getText().toString();
 
-            // Tolong validasi password minimal 8 character
+            boolean valid = true;
+
+            //Nyalain disini (Progress bar)
+            progressDialog = new ProgressDialog(RegisterActivity.this);
+            //Show Dialog
+            progressDialog.show();
+            //Set Content View
+            progressDialog.setContentView(R.layout.progress_dialog);
+            //Set Transparent Background
+            progressDialog.getWindow().setBackgroundDrawableResource(
+                    android.R.color.transparent
+            );
+
+            if(username.isEmpty()){
+                valid = false;
+                tilUsername.setError("Username must be filled");
+            } else {
+                tilUsername.setError(null);
+            }
+
+            if (email.isEmpty()){
+                valid = false;
+                tilEmail.setError("Email must be filled");
+            } else if (!validEmail(email)) {
+                valid = false;
+                tilEmail.setError("Email is invalid, the accepted format is something like name@email.com");
+            } else {
+                tilEmail.setError(null);
+            }
+
+            if (password.isEmpty()){
+                valid = false;
+                tilPassword.setError("Password must be filled");
+            } else if(password.length()<8){
+                valid = false;
+                tilPassword.setError("Password must be 8 digits or longer");
+            } else {
+                tilPassword.setError(null);
+            }
+
+            if(!confirm.equals(password)){
+                valid = false;
+                tilConfirm.setError("Confirmation Password and Password must be identical");
+            } else {
+                tilConfirm.setError(null);
+            }
+
+            if(!valid) return;
 
             firebaseCreate(email, password, username);
+
+            //Matiin progress bar
+            progressDialog.dismiss();
         }
     };
 
-    private View.OnClickListener loginListener =
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            };
+    private boolean validEmail(String email){
+        if(!email.contains("@") || email.startsWith("@")) return false;
+
+        int index = email.indexOf("@");
+        email = email.substring(index+1);
+
+        if(email.isEmpty() || email.contains("@") || !email.contains(".") || email.endsWith("."))
+            return false;
+
+        return true;
+    }
+
+    private View.OnClickListener loginListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    };
 
     private void firebaseCreate(String email, String password, final String username) {
 

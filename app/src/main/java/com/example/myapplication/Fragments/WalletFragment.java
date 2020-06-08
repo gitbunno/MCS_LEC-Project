@@ -2,13 +2,22 @@ package com.example.myapplication.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 /**
@@ -25,6 +34,12 @@ public class WalletFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    FirebaseAuth auth;
+    FirebaseUser user;
+    FirebaseFirestore db;
+
+    TextView txtGreetings, tvBalance, tvDebt;
 
     public WalletFragment() {
         // Required empty public constructor
@@ -61,6 +76,41 @@ public class WalletFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wallet, container, false);
+        View v = inflater.inflate(R.layout.fragment_wallet, container, false);
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+
+        tvBalance = v.findViewById(R.id.wallet_balance);
+        tvDebt = v.findViewById(R.id.wallet_debt);
+
+        DocumentReference ref = db.collection("users").document(user.getUid());
+        ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    long balance = doc.getLong("balance");
+                    long debt = doc.getLong("debt");
+
+                    tvBalance.setText("IDR " + balance);
+                    tvDebt.setText("IDR " + debt);
+
+                }
+            }
+        });
+
+        txtGreetings = v.findViewById(R.id.wallet_tv_greeting);
+
+        txtGreetings.setText("Hello, " + user.getDisplayName());
+
+        return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        txtGreetings.setText("Hello, " + user.getDisplayName());
     }
 }
