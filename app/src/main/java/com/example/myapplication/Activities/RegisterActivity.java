@@ -7,12 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.TextView;
-=======
 import android.widget.EditText;
 import android.widget.Toast;
->>>>>>> firebase
 
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,53 +21,16 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class RegisterActivity extends AppCompatActivity {
 
-<<<<<<< HEAD
-    Button btnRegister;
     TextView btnLogin;
-=======
     FirebaseAuth auth;
     EditText txtUsername, txtEmail, txtPassword, txtConfirm;
     Button btnRegister;
->>>>>>> firebase
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-<<<<<<< HEAD
-        btnLogin = findViewById(R.id.register_btn_login);
-        btnLogin.setOnClickListener(loginListener);
-
-        btnRegister = findViewById(R.id.register_btn_register);
-        btnRegister.setOnClickListener(registerListener);
-    }
-
-
-    private View.OnClickListener loginListener =
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-            };
-
-    private View.OnClickListener registerListener =
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(validate()){
-                        finish();
-                    }
-                }
-            };
-
-    private boolean validate(){
-        boolean valid = true;
-
-        return valid;
-=======
         auth = FirebaseAuth.getInstance();
 
         txtUsername = findViewById(R.id.register_et_username);
@@ -81,6 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.register_btn_register);
         btnRegister.setOnClickListener(registerListener);
 
+        btnLogin = findViewById(R.id.register_btn_login);
+        btnLogin.setOnClickListener(loginListener);
 
     }
 
@@ -97,6 +59,15 @@ public class RegisterActivity extends AppCompatActivity {
             firebaseCreate(email, password, username);
         }
     };
+
+    private View.OnClickListener loginListener =
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            };
 
     private void firebaseCreate(String email, String password, final String username) {
 
@@ -122,6 +93,5 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 });
->>>>>>> firebase
     }
 }
