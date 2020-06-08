@@ -39,42 +39,29 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        Map<String, Object> note = new HashMap<>();
-        note.put("balance", 1000);
-        
-        db.collection("notes").document("juan").set(note)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();     
+        final Map<String, Object> data = new HashMap<>();
+        data.put("id", user.getUid());
+        data.put("balance", 0);
+        data.put("debt", 0);
+
+        DocumentReference ref = db.collection("users").document(user.getUid());
+        ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot snapshot = task.getResult();
+                    if (!snapshot.exists()) {
+                        db.collection("users").document(user.getUid()).set(data);
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
 
-//        db.collection("users").document(user.getUid()).set(data)
-//        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navbar);
+                    bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
-//        Toast.makeText(this, userRef == null ? "null" : "not null", Toast.LENGTH_SHORT).show();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navbar);
-        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+                }
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

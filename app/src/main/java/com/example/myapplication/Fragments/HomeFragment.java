@@ -3,6 +3,7 @@ package com.example.myapplication.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.myapplication.Activities.AddAccountActivity;
 import com.example.myapplication.Activities.LoginActivity;
@@ -19,6 +21,15 @@ import com.example.myapplication.Adapters.AccountAdapter;
 import com.example.myapplication.Adapters.TransactionAdapter;
 import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -40,6 +51,10 @@ public class HomeFragment extends Fragment {
     LinearLayoutManager mLinearLayoutManager, nLinearLayoutManager;
     ArrayList<Transaction> transactions = new ArrayList<>();
     Button add;
+    FirebaseFirestore db;
+    FirebaseAuth auth;
+    FirebaseUser user;
+    TextView tvBalance;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -82,8 +97,26 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        add = v.findViewById(R.id.home_account_add);
-        add.setOnClickListener(addListener);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+
+//        add = v.findViewById(R.id.home_account_add);
+//        add.setOnClickListener(addListener);
+
+        tvBalance = v.findViewById(R.id.home_balance);
+
+        DocumentReference ref = db.collection("users").document(user.getUid());
+        ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    long balance = doc.getLong("balance");
+                    tvBalance.setText("IDR " + balance);
+                }
+            }
+        });
 
 
         Transaction transaction = new Transaction("Box", "01/01/2000", "2.000.000", null);

@@ -63,7 +63,6 @@ public class EditActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(cancelListener);
 
     }
-
     private View.OnClickListener confirmListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -93,25 +92,27 @@ public class EditActivity extends AppCompatActivity {
                     tilPassword.setError(null);
                     updatePassword = true;
                 }
+
+                if(confirm.isEmpty()) {
+                    tilConfirm.setError("Confirmation Password must be filled");
+                    return;
+                } else if(!confirm.equals(oldPassword)){
+                    tilConfirm.setError("Wrong Password");
+                    return;
+                } else {
+                    if(updatePassword){
+                        user.updatePassword(newPassword);
+                    }
+                    tilConfirm.setError(null);
+                }
+
             } else {
                 tilPassword.setError(null);
             }
 
-            if(confirm.isEmpty()) {
-                tilConfirm.setError("Confirmation Password must be filled");
-                return;
-            } else if(!confirm.equals(oldPassword)){
-                tilConfirm.setError("Wrong Password");
-                return;
-            } else {
-                if(updatePassword){
-                    user.updatePassword(newPassword);
-                }
-                tilConfirm.setError(null);
-            }
 
             //Matiin progress bar
-            progressDialog.dismiss();
+
 
             UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                     .setDisplayName(newUsername)
@@ -119,7 +120,10 @@ public class EditActivity extends AppCompatActivity {
             user.updateProfile(profileChangeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) finish();
+                    if (task.isSuccessful()) {
+                        progressDialog.dismiss();
+                        finish();
+                    }
                 }
             });
         }

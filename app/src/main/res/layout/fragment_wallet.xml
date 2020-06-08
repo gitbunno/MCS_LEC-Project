@@ -47,11 +47,12 @@
                 android:gravity="center"/>
 
             <TextView
+                android:id="@+id/wallet_balance"
                 android:textColor="@color/colorDarkGreen"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="IDR 10,000,000"
+                android:text=""
                 android:textSize="16pt"
                 android:gravity="center"
                 android:paddingBottom="8dp"/>
@@ -77,11 +78,12 @@
                 android:gravity="center"/>
 
             <TextView
+                android:id="@+id/wallet_debt"
                 android:textColor="@color/colorDarkRed"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="IDR 2,000,000"
+                android:text=""
                 android:textSize="16pt"
                 android:gravity="center"
                 android:paddingBottom="8dp"/>
