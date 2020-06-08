@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button btnLogin;
     TextView btnRegister;
+    EditText txtEmail, txtPassword;
 
     GoogleSignInClient mgGoogleSignInClient;
     SignInButton sgnGoogle;
@@ -57,6 +60,9 @@ public class LoginActivity extends AppCompatActivity {
         mgGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         sgnGoogle.setOnClickListener(googleListener);
 
+        txtEmail = findViewById(R.id.login_et_email);
+        txtPassword = findViewById(R.id.login_et_password);
+
         btnLogin = findViewById(R.id.login_btn_login);
         btnLogin.setOnClickListener(loginListener);
 
@@ -69,9 +75,13 @@ public class LoginActivity extends AppCompatActivity {
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(validate()){
-                        finish();
+                    String email = txtEmail.getText().toString();
+                    String password = txtPassword.getText().toString();
+                    if (email.isEmpty() || password.isEmpty()) {
+                        Toast.makeText(LoginActivity.this, "Please insert validation", Toast.LENGTH_SHORT).show();
+                        return;
                     }
+                    firebaseAuthNormal(email, password);
                 }
             };
 
@@ -133,7 +143,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthNormal(String email, String password) {
-
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            firebaseUser = firebaseAuth.getCurrentUser();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Wrong email/password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     private boolean validate(){
