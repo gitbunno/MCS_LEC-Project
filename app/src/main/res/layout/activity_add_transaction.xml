@@ -40,7 +40,7 @@
                 android:id="@+id/add_transaction_et_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="date"
                 android:drawableStart="@drawable/ic_date_range_black_24dp"
                 style="@style/TIForm"/>
 

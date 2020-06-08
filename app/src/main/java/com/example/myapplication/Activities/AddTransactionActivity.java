@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,15 @@ import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddTransactionActivity extends AppCompatActivity {
 
@@ -22,10 +31,17 @@ public class AddTransactionActivity extends AppCompatActivity {
     Button btnConfirm, btnCancel;
     ProgressDialog progressDialog;
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth auth;
+    FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
 
         tilName = findViewById(R.id.add_transaction_til_name);
         tilDate = findViewById(R.id.add_transaction_til_date);
@@ -84,10 +100,25 @@ public class AddTransactionActivity extends AppCompatActivity {
                 tilPrice.setError(null);
             }
 
-            //Tambah akun ke database, tampilin di home -> accounts
+            if(valid){
+                Map<String, Object> dummy = new HashMap<>();
+                dummy.put("name", etName.getText().toString());
+                //date pake timestamp
+                dummy.put("date", etDate.getText().toString());
+                dummy.put("price", Integer.parseInt(etPrice.getText().toString()));
+                dummy.put("timestamp", FieldValue.serverTimestamp());
+
+                db.collection("users").document(user.getUid()).collection("transactions").add(dummy).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        if(task.isSuccessful()){
+                            progressDialog.dismiss();
+                        }
+                    }
+                });
+            }
 
             //Matiin progress bar
-            progressDialog.dismiss();
         }
     };
 
