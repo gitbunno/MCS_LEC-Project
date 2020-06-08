@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         data.put("balance", 0);
         data.put("debt", 0);
 
-        DocumentReference ref = db.collection("users").document(user.getUid());
+        final DocumentReference ref = db.collection("users").document(user.getUid());
         ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -53,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
                     if (!snapshot.exists()) {
                         db.collection("users").document(user.getUid()).set(data);
                     }
+
+//                    final Map<String, Object> dummy = new HashMap<>();
+//                    dummy.put("name", "TR1");
+//                    dummy.put("type", "Income");
+//                    dummy.put("amount", 10000);
+//                    dummy.put("timestamp", FieldValue.serverTimestamp());
+//
+//                    ref.collection("transactions").add(dummy);
+//                    ref.update("balance", FieldValue.increment((int)dummy.get("amount")));
 
                     BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navbar);
                     bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
