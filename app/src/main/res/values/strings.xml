@@ -11,8 +11,8 @@
     <string name="menu_transactions">Transactions</string>
     <string name="menu_profile">Profile</string>
 
-    <string name="home_profile_title">Profile</string>
-    <string name="home_profile_title">Profile</string>
+    <string name="home_account_title">Accounts</string>
+    <string name="home_account_add">Add Account</string>
     <string name="home_balance_title">Balance</string>
     <string name="home_history_title">History</string>
 
