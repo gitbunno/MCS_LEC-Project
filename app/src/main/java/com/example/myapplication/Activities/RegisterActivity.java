@@ -72,8 +72,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void firebaseCreate(String email, String password, final String username) {
 
-//        Toast.makeText(this, email + password, Toast.LENGTH_SHORT).show();
-
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

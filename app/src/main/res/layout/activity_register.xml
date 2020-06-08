@@ -96,8 +96,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_confirmation_password"
-                app:errorEnabled="true"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/register_et_cpassword"
