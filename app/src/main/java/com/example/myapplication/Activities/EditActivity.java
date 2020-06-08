@@ -61,6 +61,7 @@ public class EditActivity extends AppCompatActivity {
 
         btnConfirm.setOnClickListener(confirmListener);
         btnCancel.setOnClickListener(cancelListener);
+
     }
 
     private View.OnClickListener confirmListener = new View.OnClickListener() {
