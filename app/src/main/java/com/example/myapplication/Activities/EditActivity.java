@@ -84,7 +84,6 @@ public class EditActivity extends AppCompatActivity {
 
                         user.updatePassword(password);
                     }
-
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                             .setDisplayName(username)
                             .build();
