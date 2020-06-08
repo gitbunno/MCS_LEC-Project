@@ -31,6 +31,7 @@
             style="@style/CleanButtonInline"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transactions_rv_transactions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_transaction"

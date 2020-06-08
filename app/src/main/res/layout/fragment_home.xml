@@ -7,48 +7,48 @@
     android:background="@color/colorDisabledLight"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/CleanContainer">
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        style="@style/CleanContainer">-->
 
-        <TextView
-            android:id="@+id/home_tv_account_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/account_title"
-            android:textColor="@color/colorBlack"
-            style="@style/TVTitle"/>
+<!--        <TextView-->
+<!--            android:id="@+id/home_tv_account_title"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/account_title"-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--            style="@style/TVTitle"/>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/home_tv_account_title"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/home_tv_account_title"-->
+<!--            android:orientation="vertical">-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_rv_account"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_account"
-                tools:itemCount="5">
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/home_rv_account"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                tools:listitem="@layout/item_account"-->
+<!--                tools:itemCount="5">-->
 
-            </androidx.recyclerview.widget.RecyclerView>
+<!--            </androidx.recyclerview.widget.RecyclerView>-->
 
-            <Button
-                android:id="@+id/home_account_add"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/CleanButtonInline"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
-                android:drawableEnd="@drawable/ic_add_black_24dp"
-                android:text="@string/home_account_add"
-                android:textColor="@color/colorBlack"/>
+<!--            <Button-->
+<!--                android:id="@+id/home_account_add"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="@style/CleanButtonInline"-->
+<!--                android:paddingStart="30dp"-->
+<!--                android:paddingEnd="30dp"-->
+<!--                android:drawableEnd="@drawable/ic_add_black_24dp"-->
+<!--                android:text="@string/home_account_add"-->
+<!--                android:textColor="@color/colorBlack"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"

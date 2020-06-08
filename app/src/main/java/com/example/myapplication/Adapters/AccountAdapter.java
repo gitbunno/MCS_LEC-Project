@@ -20,12 +20,12 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder>{
+public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHolder>{
 
     private Context mContext;
     private ArrayList<Transaction> transactions;
 
-    public TransactionAdapter(Context context, ArrayList<Transaction> transactions){
+    public AccountAdapter(Context context, ArrayList<Transaction> transactions){
         mContext = context;
         this.transactions = transactions;
     }
@@ -33,15 +33,14 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
         RelativeLayout layout;
         ImageView imageView;
-        TextView tvName, tvDate, tvPrice;
+        TextView tvName, tvBalance;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            layout = itemView.findViewById(R.id.item_transaction_layout);
-            tvName = itemView.findViewById(R.id.item_transaction_name);
-            tvDate = itemView.findViewById(R.id.item_transaction_date);
-            tvPrice = itemView.findViewById(R.id.item_transaction_price);
+            layout = itemView.findViewById(R.id.item_account_layout);
+            tvName = itemView.findViewById(R.id.item_account_name);
+            tvBalance = itemView.findViewById(R.id.item_account_balance);
         }
     }
 
@@ -57,8 +56,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.tvName.setText(transactions.get(position).getName());
-        holder.tvPrice.setText(transactions.get(position).getPrice());
-        holder.tvDate.setText(transactions.get(position).getDate());
+        holder.tvBalance.setText(transactions.get(position).getPrice());
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

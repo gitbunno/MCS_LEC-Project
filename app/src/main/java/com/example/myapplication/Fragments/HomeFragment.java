@@ -15,6 +15,7 @@ import android.widget.Button;
 import com.example.myapplication.Activities.AddAccountActivity;
 import com.example.myapplication.Activities.LoginActivity;
 import com.example.myapplication.Activities.RegisterActivity;
+import com.example.myapplication.Adapters.AccountAdapter;
 import com.example.myapplication.Adapters.TransactionAdapter;
 import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
@@ -33,9 +34,10 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    TransactionAdapter mAdapter;
-    RecyclerView mRecyclerView;
-    LinearLayoutManager mLinearLayoutManager;
+    AccountAdapter mAdapter;
+    TransactionAdapter nAdapter;
+    RecyclerView mRecyclerView, nRecyclerView;
+    LinearLayoutManager mLinearLayoutManager, nLinearLayoutManager;
     ArrayList<Transaction> transactions = new ArrayList<>();
     Button add;
 
@@ -83,16 +85,27 @@ public class HomeFragment extends Fragment {
         add = v.findViewById(R.id.home_account_add);
         add.setOnClickListener(addListener);
 
-        Transaction transaction = new Transaction("Box", "01/01/2000", "2.000.000", null);
-        transactions.add(transaction);
-        transactions.add(transaction);
 
-        mAdapter = new TransactionAdapter(v.getContext(), transactions);
+        Transaction transaction = new Transaction("Box", "01/01/2000", "2.000.000", null);
+        Transaction transactiona = new Transaction("Boxs", "01/01/2000", "3.000.000", null);
+        transactions.add(transaction);
+        transactions.add(transactiona);
+
+        mAdapter = new AccountAdapter(v.getContext(), transactions);
         mLinearLayoutManager = new LinearLayoutManager(v.getContext());
         mRecyclerView = v.findViewById(R.id.home_rv_history);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+
+//        nAdapter = new TransactionAdapter(v.getContext(), transactions);
+//        nLinearLayoutManager = new LinearLayoutManager(v.getContext());
+//        nRecyclerView = v.findViewById(R.id.home_rv_history);
+//        nRecyclerView.setHasFixedSize(true);
+//        nRecyclerView.setLayoutManager(nLinearLayoutManager);
+//        nRecyclerView.setAdapter(nAdapter);
+
 
         return v;
     }
