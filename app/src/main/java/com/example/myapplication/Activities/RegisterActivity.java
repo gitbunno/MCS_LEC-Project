@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -46,14 +48,15 @@ public class RegisterActivity extends AppCompatActivity {
 
             String email = txtEmail.getText().toString();
             String password = txtPassword.getText().toString();
+            String username = txtUsername.getText().toString();
 
             // Tolong validasi password minimal 8 character
 
-            firebaseCreate(email, password);
+            firebaseCreate(email, password, username);
         }
     };
 
-    private void firebaseCreate(String email, String password) {
+    private void firebaseCreate(String email, String password, final String username) {
 
 //        Toast.makeText(this, email + password, Toast.LENGTH_SHORT).show();
 
@@ -62,6 +65,13 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(username)
+                                    .build();
+
+                            FirebaseUser user = auth.getCurrentUser();
+                            user.updateProfile(profileChangeRequest);
+
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
