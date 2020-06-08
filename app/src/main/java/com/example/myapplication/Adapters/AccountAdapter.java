@@ -55,17 +55,17 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.tvName.setText(transactions.get(position).getName());
-        holder.tvBalance.setText(transactions.get(position).getPrice());
+//        holder.tvName.setText(transactions.get(position).getName());
+//        holder.tvBalance.setText(transactions.get(position).getPrice());
 
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, DetailActivity.class);
-                //passing data
-                mContext.startActivity(intent);
-            }
-        });
+//        holder.layout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(mContext, DetailActivity.class);
+//                //passing data
+//                mContext.startActivity(intent);
+//            }
+//        });
     }
 
     @Override
