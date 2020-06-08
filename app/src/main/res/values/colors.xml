@@ -5,9 +5,10 @@
     <color name="colorAccent">#8AB928</color>
     <color name="colorDisabled">#AAA</color>
     <color name="colorDisabledLight">#DDD</color>
+    <color name="colorDarkGreen">#004E25</color>
     <color name="colorGreen">#027B3B</color>
     <color name="colorLightGreen">#8AB928</color>
-    <color name="colorLighterGreen">#EEFFC7</color>
+    <color name="colorLighterGreen">#B1FF00</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorRed">#C33</color>
     <color name="colorLightRed">#E55</color>

@@ -1,10 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.WalletFragment"
-    android:background="@color/colorDisabledLight"
-    android:orientation="vertical">
+    tools:context=".Activities.MainActivity">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/name"
+        android:layout_marginTop="10pt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16pt"
+        android:text="Hello, Calvin"
+        android:gravity="center"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
+        android:layout_below="@id/name"
+        android:layout_marginTop="10pt"
+        android:layout_width="match_parent"
+        android:layout_height="50pt"
+        app:cardCornerRadius="8pt"
+        android:layout_marginLeft="10pt"
+        android:layout_marginRight="10pt"
+        >
+        <LinearLayout
+            android:background="@drawable/background2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="#ffffff"
+                android:layout_marginTop="5pt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Balance:"
+                android:textStyle="bold"
+                android:textSize="10pt"
+                android:gravity="center"
+                />
+            <TextView
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IDR 10,000,000"
+                android:textSize="16pt"
+                android:gravity="center"
+                />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card2"
+        android:layout_below="@id/card1"
+        android:layout_marginTop="10pt"
+        android:layout_width="match_parent"
+        android:layout_height="50pt"
+        app:cardCornerRadius="8pt"
+        android:layout_marginLeft="10pt"
+        android:layout_marginRight="10pt"
+        >
+        <LinearLayout
+            android:background="@drawable/background4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textStyle="bold"
+                android:textColor="#ffff"
+                android:layout_marginTop="5pt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Debt:"
+                android:textSize="10pt"
+                android:gravity="center"
+                />
+            <TextView
+                android:textColor="#ffff"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IDR 2,000,000"
+                android:textSize="16pt"
+                android:gravity="center"
+                />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navbar">
+
+    </FrameLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/navmenu"
+        android:background="?android:attr/windowBackground"/>
+</RelativeLayout>

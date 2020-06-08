@@ -29,7 +29,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_rv_account"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_account">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -71,11 +72,12 @@
                 android:id="@+id/home_balance_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="6dp"
                 style="@style/CleanButton"
-                android:background="@color/colorWhite"
+                android:background="@drawable/rounded_corner"
                 android:text="@string/home_balance_title"
                 android:textSize="30sp"
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorDarkGreen"/>
 
         </LinearLayout>
 
@@ -103,7 +105,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_rv_history"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_transaction">
 
             </androidx.recyclerview.widget.RecyclerView>
 
