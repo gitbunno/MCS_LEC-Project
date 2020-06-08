@@ -36,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
     private static int RC_SIGN_IN = 243;
 
     FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
 
     Button btnLogin;
     TextView btnRegister;
@@ -97,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             };
 
