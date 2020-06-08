@@ -13,9 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.Activities.AddAccountActivity;
 import com.example.myapplication.Activities.LoginActivity;
+import com.example.myapplication.Activities.MainActivity;
 import com.example.myapplication.Activities.RegisterActivity;
 import com.example.myapplication.Adapters.AccountAdapter;
 import com.example.myapplication.Adapters.TransactionAdapter;
@@ -25,13 +27,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -95,7 +101,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
+        final View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -117,14 +123,6 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
-//        add = v.findViewById(R.id.home_account_add);
-//        add.setOnClickListener(addListener);
-
-
-        Transaction transaction = new Transaction("Box", "01/01/2000", "2.000.000", null);
-        Transaction transactiona = new Transaction("Boxs", "01/01/2000", "3.000.000", null);
-        transactions.add(transaction);
-        transactions.add(transactiona);
 
         mAdapter = new AccountAdapter(v.getContext(), transactions);
         mLinearLayoutManager = new LinearLayoutManager(v.getContext());
@@ -132,6 +130,35 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        CollectionReference cRef = ref.collection("transactions");
+        cRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot doc : task.getResult()) {
+//                        Toast.makeText(v.getContext(), "Name: " + doc.getString("name") + " ID: " + doc.getId(), Toast.LENGTH_SHORT).show();
+                        Date date = doc.getDate("timestamp");
+                        String d = date.getDay() + "/" + date.getMonth() + "/" + date.getYear();
+//                        Toast.makeText(v.getContext(), "date: " + d, Toast.LENGTH_SHORT).show();
+                        Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), null);
+                        transactions.add(transaction);
+                        mAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
+
+//        add = v.findViewById(R.id.home_account_add);
+//        add.setOnClickListener(addListener);
+
+
+//        Transaction transaction = new Transaction("Box", "01/01/2000", "2.000.000", null);
+//        Transaction transactiona = new Transaction("Boxs", "01/01/2000", "3.000.000", null);
+//        transactions.add(transaction);
+//        transactions.add(transactiona);
+
+
 
 
 //        nAdapter = new TransactionAdapter(v.getContext(), transactions);
