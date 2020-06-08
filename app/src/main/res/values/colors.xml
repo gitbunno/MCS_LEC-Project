@@ -10,5 +10,6 @@
     <color name="colorLighterGreen">#EEFFC7</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorRed">#C33</color>
+    <color name="colorLightRed">#E55</color>
     <color name="colorBlack">#000</color>
 </resources>

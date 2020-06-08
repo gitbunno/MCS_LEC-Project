@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.myapplication.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btnLogin, btnRegister;
+    Button btnLogin;
+    TextView btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
 
         btnRegister = findViewById(R.id.login_btn_register);
         btnRegister.setOnClickListener(registerListener);
-
     }
 
     private View.OnClickListener loginListener =

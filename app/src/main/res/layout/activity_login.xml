@@ -57,16 +57,15 @@
             android:background="@drawable/rounded_button"
             style="@style/CleanButton"/>
 
-        <Button
+        <TextView
             android:id="@+id/login_btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_below="@id/login_btn_login"
-            android:text="@string/button_register"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/rounded_button"
-            style="@style/CleanButton"/>
+            android:text="@string/tv_register"
+            android:textAlignment="center"
+            android:textColor="@color/colorGreen"/>
     </LinearLayout>
 
 </RelativeLayout>

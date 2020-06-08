@@ -114,11 +114,11 @@
                 android:id="@+id/profile_btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:layout_marginHorizontal="12dp"
                 style="@style/CleanButton"
+                android:background="@drawable/rounded_button_red"
                 android:text="@string/button_logout"
-                android:textColor="@color/colorWhite"
-                android:background="@color/colorRed"/>
+                android:textColor="@color/colorWhite"/>
 
         </LinearLayout>
 

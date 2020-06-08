@@ -95,7 +95,7 @@
                 android:id="@+id/home_history_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/account_title"
+                android:text="@string/history_title"
                 android:textColor="@color/colorBlack"
                 style="@style/TVTitle"/>
 

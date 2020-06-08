@@ -11,17 +11,21 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="CleanButton">
+    <style name="CleanButton" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:padding">10dp</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:stateListAnimator">@null</item>
     </style>
-    <style name="CleanButtonInline" parent="Widget.AppCompat.EditText">
+    <style name="CleanButtonInline">
         <item name="android:padding">10dp</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:stateListAnimator">@null</item>
         <item name="android:background">@drawable/textlines</item>
     </style>
     <style name="CleanContainer">
