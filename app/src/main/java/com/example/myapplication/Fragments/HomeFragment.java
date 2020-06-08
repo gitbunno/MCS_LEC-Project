@@ -117,6 +117,8 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+//        add = v.findViewById(R.id.home_account_add);
+//        add.setOnClickListener(addListener);
 
 
         Transaction transaction = new Transaction("Box", "01/01/2000", "2.000.000", null);
