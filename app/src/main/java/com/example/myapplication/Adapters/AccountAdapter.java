@@ -33,14 +33,15 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
         RelativeLayout layout;
         ImageView imageView;
-        TextView tvName, tvBalance;
+        TextView tvName, tvBalance, tvDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            layout = itemView.findViewById(R.id.item_account_layout);
-            tvName = itemView.findViewById(R.id.item_account_name);
-            tvBalance = itemView.findViewById(R.id.item_account_balance);
+            layout = itemView.findViewById(R.id.item_transaction_layout);
+            tvName = itemView.findViewById(R.id.item_transaction_name);
+            tvBalance = itemView.findViewById(R.id.item_transaction_price);
+            tvDate = itemView.findViewById(R.id.item_transaction_date);
         }
     }
 
@@ -55,17 +56,18 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-//        holder.tvName.setText(transactions.get(position).getName());
-//        holder.tvBalance.setText(transactions.get(position).getPrice());
+        holder.tvName.setText(transactions.get(position).getName());
+        holder.tvBalance.setText(transactions.get(position).getPrice());
+        holder.tvDate.setText(transactions.get(position).getDate());
 
-//        holder.layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(mContext, DetailActivity.class);
-//                //passing data
-//                mContext.startActivity(intent);
-//            }
-//        });
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DetailActivity.class);
+                //passing data
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

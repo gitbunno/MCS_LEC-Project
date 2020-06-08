@@ -3,6 +3,7 @@ package com.example.myapplication.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,9 +18,18 @@ import com.example.myapplication.Activities.AddTransactionActivity;
 import com.example.myapplication.Adapters.TransactionAdapter;
 import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -37,6 +47,9 @@ public class TransactionFragment extends Fragment {
     RecyclerView mRecyclerView;
     LinearLayoutManager mLinearLayoutManager;
     ArrayList<Transaction> transactions = new ArrayList<>();
+    FirebaseAuth auth;
+    FirebaseUser user;
+    FirebaseFirestore db;
     FloatingActionButton add;
 
     // TODO: Rename and change types of parameters
@@ -81,10 +94,14 @@ public class TransactionFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_transaction, container, false);
 
-        Transaction transaction = new Transaction("Box", "01/01/2000", "2.000.000", null);
-        Transaction transactiona = new Transaction("Boxs", "01/01/2000", "3.000.000", null);
-        transactions.add(transaction);
-        transactions.add(transactiona);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+
+//        Transaction transaction = new Transaction("Box", "01/01/2000", "2.000.000", null);
+////        Transaction transactiona = new Transaction("Boxs", "01/01/2000", "3.000.000", null);
+////        transactions.add(transaction);
+////        transactions.add(transactiona);
 
         mAdapter = new TransactionAdapter(v.getContext(), transactions);
         mLinearLayoutManager = new LinearLayoutManager(v.getContext());
@@ -95,6 +112,25 @@ public class TransactionFragment extends Fragment {
 
         add = v.findViewById(R.id.transaction_fab_add);
         add.setOnClickListener(addListener);
+
+        CollectionReference cRef = db.collection("users").document(user.getUid()).collection("transactions");
+        cRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot doc : task.getResult()) {
+//                        Toast.makeText(v.getContext(), "Name: " + doc.getString("name") + " ID: " + doc.getId(), Toast.LENGTH_SHORT).show();
+                        Date date = doc.getDate("timestamp");
+                        String d = date.getDay() + "/" + date.getMonth() + "/" + date.getYear();
+//                        Toast.makeText(v.getContext(), "date: " + d, Toast.LENGTH_SHORT).show();
+                        Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), null);
+                        transactions.add(transaction);
+                        mAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
+
 
         return v;
     }
