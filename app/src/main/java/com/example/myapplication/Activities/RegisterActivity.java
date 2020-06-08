@@ -3,6 +3,7 @@ package com.example.myapplication.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText txtUsername, txtEmail, txtPassword, txtConfirm;
     Button btnRegister;
     TextInputLayout tilUsername, tilEmail, tilPassword, tilConfirm;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,17 @@ public class RegisterActivity extends AppCompatActivity {
             String confirm = txtConfirm.getText().toString();
 
             boolean valid = true;
+
+            //Nyalain disini (Progress bar)
+            progressDialog = new ProgressDialog(RegisterActivity.this);
+            //Show Dialog
+            progressDialog.show();
+            //Set Content View
+            progressDialog.setContentView(R.layout.progress_dialog);
+            //Set Transparent Background
+            progressDialog.getWindow().setBackgroundDrawableResource(
+                    android.R.color.transparent
+            );
 
             if(username.isEmpty()){
                 valid = false;
@@ -95,6 +108,9 @@ public class RegisterActivity extends AppCompatActivity {
             if(!valid) return;
 
             firebaseCreate(email, password, username);
+
+            //Matiin progress bar
+            progressDialog.dismiss();
         }
     };
 

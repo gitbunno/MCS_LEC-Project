@@ -1,5 +1,6 @@
 package com.example.myapplication.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,7 @@ public class EditActivity extends AppCompatActivity {
     Button btnConfirm, btnCancel;
     FirebaseAuth auth;
     FirebaseUser user;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,17 @@ public class EditActivity extends AppCompatActivity {
 
                     boolean valid = true, updatePassword = false;
 
+                    //Nyalain disini (Progress bar)
+                    progressDialog = new ProgressDialog(EditActivity.this);
+                    //Show Dialog
+                    progressDialog.show();
+                    //Set Content View
+                    progressDialog.setContentView(R.layout.progress_dialog);
+                    //Set Transparent Background
+                    progressDialog.getWindow().setBackgroundDrawableResource(
+                            android.R.color.transparent
+                    );
+
                     if(!newPassword.isEmpty()){
                         if(newPassword.length()<8){
                             tilPassword.setError("New Password must be 8 digits or more");
@@ -97,6 +110,8 @@ public class EditActivity extends AppCompatActivity {
                         tilConfirm.setError(null);
                     }
 
+                    //Matiin progress bar
+                    progressDialog.dismiss();
 
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                             .setDisplayName(newUsername)
@@ -104,7 +119,9 @@ public class EditActivity extends AppCompatActivity {
                     user.updateProfile(profileChangeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) finish();
+                            if (task.isSuccessful()) {
+                                finish();
+                            }
                         }
                     });
                 }
