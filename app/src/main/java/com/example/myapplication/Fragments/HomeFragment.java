@@ -31,6 +31,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -132,16 +133,16 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         CollectionReference cRef = ref.collection("transactions");
-        cRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        cRef.orderBy("timestamp", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot doc : task.getResult()) {
 //                        Toast.makeText(v.getContext(), "Name: " + doc.getString("name") + " ID: " + doc.getId(), Toast.LENGTH_SHORT).show();
                         Date date = doc.getDate("timestamp");
-                        String d = date.getDay() + "/" + date.getMonth() + "/" + date.getYear();
+                        String d = (date.getDay()+7) + "/" + (date.getMonth()+1) + "/" + (date.getYear()+1900);
 //                        Toast.makeText(v.getContext(), "date: " + d, Toast.LENGTH_SHORT).show();
-                        Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), null);
+                        Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), doc.getString("image"));
                         transactions.add(transaction);
                         mAdapter.notifyDataSetChanged();
                     }

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Activities.DetailActivity;
 import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
@@ -42,6 +43,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             tvName = itemView.findViewById(R.id.item_transaction_name);
             tvDate = itemView.findViewById(R.id.item_transaction_date);
             tvPrice = itemView.findViewById(R.id.item_transaction_price);
+            imageView = itemView.findViewById(R.id.item_transaction_img);
         }
     }
 
@@ -68,6 +70,12 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
                 mContext.startActivity(intent);
             }
         });
+
+        Glide.with(mContext)
+                .load(transactions.get(position).getUrl())
+                .centerCrop()
+                .placeholder(R.drawable.bunnocrop)
+                .into(holder.imageView);
     }
 
     @Override

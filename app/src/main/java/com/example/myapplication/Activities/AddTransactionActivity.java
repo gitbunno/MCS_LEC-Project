@@ -117,13 +117,13 @@ public class AddTransactionActivity extends AppCompatActivity {
             if(valid){
                 String image = "";
                 if (category.equals("Income")){
-                    image = "";
+                    image = "https://i.postimg.cc/90hfvv3s/incomeA.png";
                 } else if (category.equals("Expense")){
-                    image = "";
+                    image = "https://i.postimg.cc/6p3QJrS6/expenseA.png";
                 } else if (category.equals("Debt")){
-                    image = "";
+                    image = "https://i.postimg.cc/xdXqHvyp/debtA.png";
                 } else if (category.equals("Paid Debt")) {
-                    image = "";
+                    image = "https://i.postimg.cc/FshRG5VL/payDebtA.png";
                 }
 
                 Map<String, Object> dummy = new HashMap<>();
@@ -133,7 +133,6 @@ public class AddTransactionActivity extends AppCompatActivity {
                 dummy.put("amount", Integer.parseInt(price));
                 dummy.put("timestamp", FieldValue.serverTimestamp());
                 dummy.put("category", category);
-
                 dummy.put("image", image);
 
                 db.collection("users").document(user.getUid()).collection("transactions").add(dummy).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -141,6 +140,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<DocumentReference> task) {
                         if(task.isSuccessful()){
                             progressDialog.dismiss();
+                            finish();
                         }
                     }
                 });
@@ -155,7 +155,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                     db.collection("users").document(user.getUid()).update("debt", FieldValue.increment(-(int) dummy.get("amount")));
                     db.collection("users").document(user.getUid()).update("balance", FieldValue.increment(-(int)dummy.get("amount")));
                 }
-                finish();
+//                finish();
             }
         }
     };

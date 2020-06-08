@@ -5,12 +5,13 @@ import android.media.Image;
 public class Transaction {
     private String name, date, price;
     private Image image;
+    private String url;
 
-    public Transaction(String name, String date, String price, Image image) {
+    public Transaction(String name, String date, String price, String url) {
         this.name = name;
         this.date = date;
         this.price = price;
-        this.image = image;
+        this.url = url;
     }
 
     public String getName() {
@@ -43,5 +44,13 @@ public class Transaction {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

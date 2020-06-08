@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.myapplication.Activities.AddAccountActivity;
 import com.example.myapplication.Activities.AddTransactionActivity;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -114,16 +116,17 @@ public class TransactionFragment extends Fragment {
         add.setOnClickListener(addListener);
 
         CollectionReference cRef = db.collection("users").document(user.getUid()).collection("transactions");
-        cRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        cRef.orderBy("timestamp", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot doc : task.getResult()) {
 //                        Toast.makeText(v.getContext(), "Name: " + doc.getString("name") + " ID: " + doc.getId(), Toast.LENGTH_SHORT).show();
                         Date date = doc.getDate("timestamp");
-                        String d = date.getDay() + "/" + date.getMonth() + "/" + date.getYear();
+//                        Date date = new Date(doc.getDate("timestamp"));
+                        String d = (date.getDay()+7) + "/" + (date.getMonth()+1) + "/" + (date.getYear()+1900);
 //                        Toast.makeText(v.getContext(), "date: " + d, Toast.LENGTH_SHORT).show();
-                        Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), null);
+                        Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), doc.getString("image"));
                         transactions.add(transaction);
                         mAdapter.notifyDataSetChanged();
                     }
