@@ -29,22 +29,12 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_transaction_til_date"
+        <Spinner
+            android:id="@+id/add_transaction_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date"
-            app:errorEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/add_transaction_et_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:drawableStart="@drawable/ic_date_range_black_24dp"
-                style="@style/TIForm"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:drawableStart="@drawable/ic_class_black_24dp"
+            style="@style/TIForm"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_transaction_til_price"

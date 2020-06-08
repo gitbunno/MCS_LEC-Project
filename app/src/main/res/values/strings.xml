@@ -43,4 +43,12 @@
     <string name="account_name">Account Name</string>
     <string name="account_balance">Account Balance</string>
 
+    <string-array name="categories">
+        <item>Income</item>
+        <item>Expense</item>
+        <item>Debt</item>
+        <item>Paid Debt</item>
+
+    </string-array>
+
 </resources>
