@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import com.example.myapplication.Activities.LoginActivity;
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
@@ -83,8 +84,10 @@ public class ProfileFragment extends Fragment {
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(v.getContext(), LoginActivity.class);
                     startActivity(intent);
+                    getActivity().finish();
                 }
             };
 }
