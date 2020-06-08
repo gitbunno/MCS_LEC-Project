@@ -45,8 +45,8 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    AccountAdapter mAdapter;
-    TransactionAdapter nAdapter;
+    TransactionAdapter mAdapter;
+//    TransactionAdapter nAdapter;
     RecyclerView mRecyclerView, nRecyclerView;
     LinearLayoutManager mLinearLayoutManager, nLinearLayoutManager;
     ArrayList<Transaction> transactions = new ArrayList<>();
@@ -126,7 +126,7 @@ public class HomeFragment extends Fragment {
         transactions.add(transaction);
         transactions.add(transactiona);
 
-        mAdapter = new AccountAdapter(v.getContext(), transactions);
+        mAdapter = new TransactionAdapter(v.getContext(), transactions);
         mLinearLayoutManager = new LinearLayoutManager(v.getContext());
         mRecyclerView = v.findViewById(R.id.home_rv_history);
         mRecyclerView.setHasFixedSize(true);

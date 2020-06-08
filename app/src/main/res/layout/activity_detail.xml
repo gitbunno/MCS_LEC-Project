@@ -6,9 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".Activities.DetailActivity">
 
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/ic_person_outline_black_24dp"/>
+    <RelativeLayout
+        android:id="@+id/detail_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CleanButtonInline">
+
+        <ImageView
+            android:id="@+id/detail_img_icon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/bunnocrop"
+
+            android:layout_margin="12dp"/>
+
+        <TextView
+            android:id="@+id/detail_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transaction Name"
+            android:layout_toRightOf="@id/detail_img_icon"
+            android:layout_alignTop="@id/detail_img_icon"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/detail_tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:paddingTop="6dp"
+            android:layout_toRightOf="@id/detail_img_icon"
+            android:layout_below="@id/detail_tv_name"/>
+
+        <TextView
+            android:id="@+id/detail_tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:paddingEnd="12dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/detail_img_icon"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_header"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/detail_tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dd/mm/yyyy"
+            style="@style/CleanButtonInline"/>
+
+        <TextView
+            android:id="@+id/detail_tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            style="@style/CleanButtonInline"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

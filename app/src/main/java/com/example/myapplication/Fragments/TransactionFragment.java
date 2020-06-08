@@ -1,5 +1,6 @@
 package com.example.myapplication.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,9 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.myapplication.Activities.AddAccountActivity;
+import com.example.myapplication.Activities.AddTransactionActivity;
 import com.example.myapplication.Adapters.TransactionAdapter;
 import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -33,13 +37,12 @@ public class TransactionFragment extends Fragment {
     RecyclerView mRecyclerView;
     LinearLayoutManager mLinearLayoutManager;
     ArrayList<Transaction> transactions = new ArrayList<>();
-    Button add;
+    FloatingActionButton add;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    RecyclerView recyclerView;
 
     public TransactionFragment() {
         // Required empty public constructor
@@ -90,6 +93,17 @@ public class TransactionFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
+        add = v.findViewById(R.id.transaction_fab_add);
+        add.setOnClickListener(addListener);
+
         return v;
     }
+
+    private View.OnClickListener addListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getContext(), AddTransactionActivity.class);
+            startActivity(intent);
+        }
+    };
 }
