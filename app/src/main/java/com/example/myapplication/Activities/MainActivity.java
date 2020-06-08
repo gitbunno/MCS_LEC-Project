@@ -13,13 +13,18 @@ import com.example.myapplication.R;
 import com.example.myapplication.Fragments.TransactionFragment;
 import com.example.myapplication.Fragments.WalletFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
+
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        db = FirebaseFirestore.getInstance();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navbar);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);

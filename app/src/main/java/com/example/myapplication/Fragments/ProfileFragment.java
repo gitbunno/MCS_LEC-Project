@@ -9,11 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.myapplication.Activities.EditActivity;
 import com.example.myapplication.Activities.LoginActivity;
 import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 /**
@@ -27,8 +32,12 @@ public class ProfileFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    Button btnLogin;
+    FirebaseAuth auth;
+    FirebaseUser user;
+
+    Button btnLogin, btnEdit;
     ImageView imageView;
+    TextView txtGreetings, txtEmail;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -71,11 +80,29 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
         btnLogin = v.findViewById(R.id.profile_btn_login);
         btnLogin.setOnClickListener(loginListener);
 
+        btnEdit = v.findViewById(R.id.profile_btn_edit);
+        btnEdit.setOnClickListener(editListener);
+
         imageView = v.findViewById(R.id.profile_img);
         imageView.setClipToOutline(true);
+
+        txtGreetings = v.findViewById(R.id.profile_tv_greeting);
+        txtEmail = v.findViewById(R.id.profile_tv_email);
+
+        txtGreetings.setText("Hello, " + user.getDisplayName());
+        txtEmail.setText(user.getEmail());
+
+        Glide.with(v)
+                .load(user.getPhotoUrl())
+                .placeholder(R.drawable.bunnocrop)
+                .centerCrop()
+                .into(imageView);
 
         return v;
     }
@@ -90,4 +117,19 @@ public class ProfileFragment extends Fragment {
                     getActivity().finish();
                 }
             };
+
+    private View.OnClickListener editListener =
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), EditActivity.class);
+                    startActivity(intent);
+                }
+            };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        txtGreetings.setText("Hello, " + user.getDisplayName());
+    }
 }

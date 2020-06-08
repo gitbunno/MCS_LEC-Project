@@ -59,7 +59,7 @@
                     android:text="@string/profile_greeting"
                     android:textColor="@color/colorBlack"/>
                 <TextView
-                    android:id="@+id/profile_tv_balance"
+                    android:id="@+id/profile_tv_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -96,15 +96,15 @@
                     android:paddingStart="30dp"
                     android:text="@string/account_edit"
                     android:textColor="@color/colorBlack"/>
-
-                <Button
-                    android:id="@+id/profile_btn_asd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/CleanButtonInline"
-                    android:paddingStart="30dp"
-                    android:text="@string/account_password"
-                    android:textColor="@color/colorBlack"/>
+=======
+<!--                <Button-->
+<!--                    android:id="@+id/profile_btn_asd"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    style="@style/CleanButtonInline"-->
+<!--                    android:paddingStart="30dp"-->
+<!--                    android:text="@string/account_password"-->
+<!--                    android:textColor="@color/colorBlack"/>-->
 
             </LinearLayout>
 
