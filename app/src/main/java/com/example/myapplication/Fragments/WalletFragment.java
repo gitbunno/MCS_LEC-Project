@@ -1,5 +1,6 @@
 package com.example.myapplication.Fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,8 @@ public class WalletFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseUser user;
     FirebaseFirestore db;
+
+    ProgressDialog progressDialog;
 
     TextView txtGreetings, tvBalance, tvDebt;
 
@@ -85,6 +88,16 @@ public class WalletFragment extends Fragment {
         tvBalance = v.findViewById(R.id.wallet_balance);
         tvDebt = v.findViewById(R.id.wallet_debt);
 
+        progressDialog = new ProgressDialog(v.getContext());
+        //Show Dialog
+        progressDialog.show();
+        //Set Content View
+        progressDialog.setContentView(R.layout.progress_dialog);
+        //Set Transparent Background
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
+
         DocumentReference ref = db.collection("users").document(user.getUid());
         ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -96,6 +109,7 @@ public class WalletFragment extends Fragment {
 
                     tvBalance.setText("IDR " + balance);
                     tvDebt.setText("IDR " + debt);
+                    progressDialog.dismiss();
 
                 }
             }

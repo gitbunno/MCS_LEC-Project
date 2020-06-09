@@ -133,6 +133,7 @@
             android:text="@string/no_transaction"
             android:gravity="center"
             android:textColor="@color/colorBlack"
+            android:visibility="gone"
             style="@style/CleanButtonInline"/>
 
         <LinearLayout

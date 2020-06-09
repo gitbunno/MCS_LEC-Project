@@ -1,5 +1,6 @@
 package com.example.myapplication.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Activities.AddAccountActivity;
@@ -54,6 +56,8 @@ public class TransactionFragment extends Fragment {
     FirebaseFirestore db;
     FloatingActionButton add;
     boolean allowRefresh;
+    ProgressDialog progressDialog;
+    TextView no;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -106,6 +110,16 @@ public class TransactionFragment extends Fragment {
 ////        transactions.add(transaction);
 ////        transactions.add(transactiona);
 
+        progressDialog = new ProgressDialog(v.getContext());
+        //Show Dialog
+        progressDialog.show();
+        //Set Content View
+        progressDialog.setContentView(R.layout.progress_dialog);
+        //Set Transparent Background
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
+
         mAdapter = new TransactionAdapter(v.getContext(), transactions);
         mLinearLayoutManager = new LinearLayoutManager(v.getContext());
         mRecyclerView = v.findViewById(R.id.transactions_rv_transactions);
@@ -116,6 +130,7 @@ public class TransactionFragment extends Fragment {
         add = v.findViewById(R.id.transaction_fab_add);
         add.setOnClickListener(addListener);
 
+        no = v.findViewById(R.id.transactions_tv_noitem);
 
 
 
@@ -155,6 +170,10 @@ public class TransactionFragment extends Fragment {
                         Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), doc.getString("image"));
                         transactions.add(transaction);
                         mAdapter.notifyDataSetChanged();
+                    }
+                    progressDialog.dismiss();
+                    if (transactions.isEmpty()) {
+                        no.setVisibility(View.VISIBLE);
                     }
                 }
             }

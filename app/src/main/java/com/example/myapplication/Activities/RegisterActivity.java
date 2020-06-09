@@ -48,6 +48,11 @@ public class RegisterActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.register_btn_login);
         btnLogin.setOnClickListener(loginListener);
 
+        tilUsername = findViewById(R.id.register_til_username);
+        tilConfirm = findViewById(R.id.register_til_cpassword);
+        tilPassword = findViewById(R.id.register_til_password);
+        tilEmail = findViewById(R.id.register_til_email);
+
     }
 
     private View.OnClickListener registerListener = new View.OnClickListener() {

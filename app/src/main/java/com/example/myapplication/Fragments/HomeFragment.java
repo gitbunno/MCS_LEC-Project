@@ -1,5 +1,6 @@
 package com.example.myapplication.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -61,7 +62,8 @@ public class HomeFragment extends Fragment {
     FirebaseFirestore db;
     FirebaseAuth auth;
     FirebaseUser user;
-    TextView tvBalance;
+    TextView tvBalance, no;
+    ProgressDialog progressDialog;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -111,6 +113,16 @@ public class HomeFragment extends Fragment {
 //        add = v.findViewById(R.id.home_account_add);
 //        add.setOnClickListener(addListener);
 
+        progressDialog = new ProgressDialog(v.getContext());
+        //Show Dialog
+        progressDialog.show();
+        //Set Content View
+        progressDialog.setContentView(R.layout.progress_dialog);
+        //Set Transparent Background
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
+
         tvBalance = v.findViewById(R.id.home_balance);
 
         DocumentReference ref = db.collection("users").document(user.getUid());
@@ -132,6 +144,8 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
+        no = v.findViewById(R.id.home_history_tv_noitem);
+
         CollectionReference cRef = ref.collection("transactions");
         cRef.orderBy("timestamp", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -145,6 +159,10 @@ public class HomeFragment extends Fragment {
                         Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), doc.getString("image"));
                         transactions.add(transaction);
                         mAdapter.notifyDataSetChanged();
+                    }
+                    progressDialog.dismiss();
+                    if (transactions.isEmpty()) {
+                        no.setVisibility(View.VISIBLE);
                     }
                 }
             }
