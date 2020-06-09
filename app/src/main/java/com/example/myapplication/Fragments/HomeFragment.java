@@ -147,7 +147,9 @@ public class HomeFragment extends Fragment {
         no = v.findViewById(R.id.home_history_tv_noitem);
 
         CollectionReference cRef = ref.collection("transactions");
-        cRef.orderBy("timestamp", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        cRef.orderBy("timestamp", Query.Direction.DESCENDING)
+                .limit(10)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
