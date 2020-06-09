@@ -4,7 +4,6 @@ import android.media.Image;
 
 public class Transaction {
     private String name, date, price;
-    private Image image;
     private String url;
 
     public Transaction(String name, String date, String price, String url) {
@@ -36,14 +35,6 @@ public class Transaction {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
     }
 
     public String getUrl() {

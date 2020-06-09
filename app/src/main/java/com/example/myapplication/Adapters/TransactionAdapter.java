@@ -57,16 +57,22 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        holder.tvName.setText(transactions.get(position).getName());
-        holder.tvPrice.setText(transactions.get(position).getPrice());
-        holder.tvDate.setText(transactions.get(position).getDate());
+        final String name = transactions.get(position).getName();
+        final String price = transactions.get(position).getPrice();
+        final String date = transactions.get(position).getDate();
+        final String url = transactions.get(position).getUrl();
+        holder.tvName.setText(name);
+        holder.tvPrice.setText(price);
+        holder.tvDate.setText(date);
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, DetailActivity.class);
-                //passing data
+                intent.putExtra("name", name);
+                intent.putExtra("date", date);
+                intent.putExtra("price", price);
+                intent.putExtra("url", url);
                 mContext.startActivity(intent);
             }
         });

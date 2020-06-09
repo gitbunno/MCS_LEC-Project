@@ -82,16 +82,6 @@ public class AddTransactionActivity extends AppCompatActivity {
 
             boolean valid = true;
 
-            //Nyalain disini (Progress bar)
-            progressDialog = new ProgressDialog(AddTransactionActivity.this);
-            //Show Dialog
-            progressDialog.show();
-            //Set Content View
-            progressDialog.setContentView(R.layout.progress_dialog);
-            //Set Transparent Background
-            progressDialog.getWindow().setBackgroundDrawableResource(
-                    android.R.color.transparent
-            );
 
             if(name.isEmpty()){
                 tilName.setError("Name must be filled");
@@ -115,6 +105,17 @@ public class AddTransactionActivity extends AppCompatActivity {
             }
 
             if(valid){
+                //Nyalain disini (Progress bar)
+                progressDialog = new ProgressDialog(AddTransactionActivity.this);
+                //Show Dialog
+                progressDialog.show();
+                //Set Content View
+                progressDialog.setContentView(R.layout.progress_dialog);
+                //Set Transparent Background
+                progressDialog.getWindow().setBackgroundDrawableResource(
+                        android.R.color.transparent
+                );
+
                 String image = "";
                 if (category.equals("Income")){
                     image = "https://i.postimg.cc/90hfvv3s/incomeA.png";

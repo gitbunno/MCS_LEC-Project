@@ -100,7 +100,7 @@ public class ProfileFragment extends Fragment {
 
         Glide.with(v)
                 .load(user.getPhotoUrl())
-                .placeholder(R.drawable.bunnocrop)
+                .placeholder(R.drawable.logo)
                 .centerCrop()
                 .into(imageView);
 

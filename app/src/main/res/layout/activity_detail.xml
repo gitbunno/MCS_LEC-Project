@@ -25,18 +25,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Transaction Name"
+            android:textStyle="bold"
             android:layout_toRightOf="@id/detail_img_icon"
             android:layout_alignTop="@id/detail_img_icon"
             android:textColor="@color/colorBlack"/>
 
-        <TextView
-            android:id="@+id/detail_tv_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Category"
-            android:paddingTop="6dp"
-            android:layout_toRightOf="@id/detail_img_icon"
-            android:layout_below="@id/detail_tv_name"/>
+<!--        <TextView-->
+<!--            android:id="@+id/detail_tv_category"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Category"-->
+<!--            android:paddingTop="6dp"-->
+<!--            android:layout_toRightOf="@id/detail_img_icon"-->
+<!--            android:layout_below="@id/detail_tv_name"/>-->
 
         <TextView
             android:id="@+id/detail_tv_price"
@@ -64,12 +65,12 @@
             android:text="dd/mm/yyyy"
             style="@style/CleanButtonInline"/>
 
-        <TextView
-            android:id="@+id/detail_tv_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Description"
-            style="@style/CleanButtonInline"/>
+<!--        <TextView-->
+<!--            android:id="@+id/detail_tv_description"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Description"-->
+<!--            style="@style/CleanButtonInline"/>-->
 
     </LinearLayout>
 
