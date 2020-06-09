@@ -116,6 +116,31 @@ public class TransactionFragment extends Fragment {
         add = v.findViewById(R.id.transaction_fab_add);
         add.setOnClickListener(addListener);
 
+
+
+
+        return v;
+    }
+
+    private View.OnClickListener addListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getContext(), AddTransactionActivity.class);
+            startActivity(intent);
+            allowRefresh = true;
+        }
+    };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        if (allowRefresh)
+//        {
+//            allowRefresh = false;
+//
+//            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+//        }
+        transactions.clear();
         CollectionReference cRef = db.collection("users").document(user.getUid()).collection("transactions");
         cRef.orderBy("timestamp", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -134,29 +159,6 @@ public class TransactionFragment extends Fragment {
                 }
             }
         });
-
-
-        return v;
-    }
-
-    private View.OnClickListener addListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getContext(), AddTransactionActivity.class);
-            startActivity(intent);
-            allowRefresh = true;
-        }
-    };
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (allowRefresh)
-        {
-            allowRefresh = false;
-
-            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
-        }
     }
 
 }
