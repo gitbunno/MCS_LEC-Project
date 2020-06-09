@@ -131,12 +131,11 @@ public class LoginActivity extends AppCompatActivity {
                 tilPassword.setError(null);
             }
 
-            if(!valid) return;
 
-            firebaseAuthNormal(email, password);
+            if(valid){
+                firebaseAuthNormal(email, password);
+            }
 
-            //Matiin progress bar
-            progressDialog.dismiss();
         }
     };
 
@@ -206,7 +205,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Wrong email/password", Toast.LENGTH_SHORT).show();
+                            
                         }
                     }
                 });

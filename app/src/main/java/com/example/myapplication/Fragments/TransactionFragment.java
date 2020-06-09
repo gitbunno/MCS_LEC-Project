@@ -53,6 +53,7 @@ public class TransactionFragment extends Fragment {
     FirebaseUser user;
     FirebaseFirestore db;
     FloatingActionButton add;
+    boolean allowRefresh;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -143,6 +144,19 @@ public class TransactionFragment extends Fragment {
         public void onClick(View v) {
             Intent intent = new Intent(getContext(), AddTransactionActivity.class);
             startActivity(intent);
+            allowRefresh = true;
         }
     };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (allowRefresh)
+        {
+            allowRefresh = false;
+
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
+    }
+
 }
