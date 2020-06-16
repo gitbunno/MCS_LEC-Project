@@ -148,29 +148,6 @@ public class HomeFragment extends Fragment {
 
         no = v.findViewById(R.id.home_history_tv_noitem);
 
-        CollectionReference cRef = ref.collection("transactions");
-        cRef.orderBy("timestamp", Query.Direction.DESCENDING)
-                .limit(10)
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot doc : task.getResult()) {
-                        Timestamp time = doc.getTimestamp("timestamp");
-                        Date date = time.toDate();
-                        String d = DateFormat.format("dd", date) + "/" + DateFormat.format("MM", date) + "/" + DateFormat.format("yyyy", date);
-                        Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), doc.getString("image"));
-                        transactions.add(transaction);
-                        mAdapter.notifyDataSetChanged();
-                    }
-                    progressDialog.dismiss();
-                    if (transactions.isEmpty()) {
-                        no.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
-        });
-
 //        add = v.findViewById(R.id.home_account_add);
 //        add.setOnClickListener(addListener);
 
@@ -202,4 +179,32 @@ public class HomeFragment extends Fragment {
         }
     };
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        transactions.clear();
+        DocumentReference ref = db.collection("users").document(user.getUid());
+        CollectionReference cRef = ref.collection("transactions");
+        cRef.orderBy("timestamp", Query.Direction.DESCENDING)
+                .limit(10)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot doc : task.getResult()) {
+                        Timestamp time = doc.getTimestamp("timestamp");
+                        Date date = time.toDate();
+                        String d = DateFormat.format("dd", date) + "/" + DateFormat.format("MM", date) + "/" + DateFormat.format("yyyy", date);
+                        Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), doc.getString("image"));
+                        transactions.add(transaction);
+                        mAdapter.notifyDataSetChanged();
+                    }
+                    progressDialog.dismiss();
+                    if (transactions.isEmpty()) {
+                        no.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        });
+    }
 }
