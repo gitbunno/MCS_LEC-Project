@@ -10,13 +10,30 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navbar"/>
+        android:layout_above="@id/space"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navbar"
+    <com.luseen.spacenavigation.SpaceNavigationView
+        android:id="@+id/space"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/navmenu"
-        android:background="?android:attr/windowBackground"/>
+        android:background="@color/colorDisabled"
+        app:active_item_color="@color/colorBlack"
+        app:centre_button_color="@color/colorLighterGreen"
+        app:inactive_item_color="@color/colorDisabled"
+        app:space_background_color="@color/colorWhite"
+        app:centre_button_icon="@drawable/ic_add_white_24dp"
+        app:space_item_icon_size="26dp"
+        app:active_centre_button_background_color="@color/colorDisabled"
+        app:space_item_icon_only_size="@dimen/space_item_icon_only_size"
+        app:space_item_text_size="@dimen/space_item_text_default_size"/>
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottom_navbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        app:menu="@menu/navmenu"-->
+<!--        android:background="?android:attr/windowBackground"/>-->
 </RelativeLayout>
