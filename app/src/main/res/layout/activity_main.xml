@@ -22,7 +22,7 @@
         android:layout_marginTop="-23dp"
         android:translationZ="4dp"
 
-        app:active_item_color="@color/colorGreen"
+        app:active_item_color="@color/colorBlack"
         app:inactive_item_color="@color/colorDisabled"
         app:centre_button_color="@color/colorGreen"
         app:centre_button_icon="@drawable/ic_add_white_24dp"

@@ -30,7 +30,6 @@
             android:id="@+id/register_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:paddingBottom="36sp"
             android:text="Register"
             android:textSize="36sp"
@@ -56,9 +55,6 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:hint="@string/input_username"
-                    android:background="@drawable/rounded_square"
-                    android:backgroundTint="@color/colorDisabledLight"
-                    android:padding="12dp"
                     android:drawableStart="@drawable/ic_person_outline_black_24dp"
                     style="@style/TIForm"/>
 
@@ -76,9 +72,6 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:hint="@string/input_email"
-                    android:background="@drawable/rounded_square"
-                    android:backgroundTint="@color/colorDisabledLight"
-                    android:padding="12dp"
                     android:drawableStart="@drawable/ic_mail_outline_black_24dp"
                     style="@style/TIForm"/>
 
@@ -97,9 +90,6 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:hint="@string/input_password"
-                    android:background="@drawable/rounded_square"
-                    android:backgroundTint="@color/colorDisabledLight"
-                    android:padding="12dp"
                     android:drawableStart="@drawable/ic_lock_outline_black_24dp"
                     style="@style/TIForm"/>
 
@@ -118,9 +108,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/input_confirmation_password"
-                    android:background="@drawable/rounded_square"
-                    android:backgroundTint="@color/colorDisabledLight"
-                    android:padding="12dp"
                     android:drawableStart="@drawable/ic_lock_outline_black_24dp"
                     android:inputType="textPassword"/>
 
