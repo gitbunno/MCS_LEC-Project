@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/login_center"
+        android:layout_alignParentTop="true"
         android:scaleType="fitXY"
         android:src="@drawable/top"/>
 
@@ -100,9 +101,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_below="@id/login_center"
         android:src="@drawable/bot"
-        android:scaleType="fitXY"
-        android:layout_marginBottom="-600dp"/>
+        android:scaleType="fitXY"/>
 
 </RelativeLayout>

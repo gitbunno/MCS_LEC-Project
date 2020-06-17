@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.MainActivity">
+    tools:context=".Activities.MainActivity"
+    android:background="@color/colorDisabledLight">
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -15,17 +16,17 @@
     <com.luseen.spacenavigation.SpaceNavigationView
         android:id="@+id/space"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorDisabled"
-        app:active_item_color="@color/colorBlack"
+        android:layout_marginTop="-23dp"
+
+        app:active_item_color="@color/colorAccent"
         app:centre_button_color="@color/colorLighterGreen"
         app:inactive_item_color="@color/colorDisabled"
-        app:space_background_color="@color/colorWhite"
         app:centre_button_icon="@drawable/ic_add_white_24dp"
+        app:space_background_color="@color/colorWhite"
         app:space_item_icon_size="26dp"
-        app:active_centre_button_background_color="@color/colorDisabled"
         app:space_item_icon_only_size="@dimen/space_item_icon_only_size"
         app:space_item_text_size="@dimen/space_item_text_default_size"/>
 

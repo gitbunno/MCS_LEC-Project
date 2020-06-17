@@ -115,7 +115,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/CleanContainer">
+        style="@style/CleanContainer"
+        android:layout_marginBottom="0dp">
 
         <TextView
             android:id="@+id/home_history_title"
@@ -147,7 +148,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_transaction"
-                tools:itemCount="7">
+                tools:itemCount="7"
+                >
 
             </androidx.recyclerview.widget.RecyclerView>
 
