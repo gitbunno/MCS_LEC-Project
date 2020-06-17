@@ -84,6 +84,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 //            String date = etDate.getText().toString();
             String category = spinner.getSelectedItem().toString();
             String price = etPrice.getText().toString();
+            String method = spinner_method.getSelectedItem().toString();
 
             boolean valid = true;
 
@@ -142,6 +143,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 dummy.put("timestamp", Calendar.getInstance().getTime());
                 dummy.put("category", category);
                 dummy.put("image", image);
+                dummy.put("method", method);
 
                 db.collection("users").document(user.getUid()).collection("transactions").add(dummy).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override

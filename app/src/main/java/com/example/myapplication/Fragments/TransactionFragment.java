@@ -171,6 +171,7 @@ public class TransactionFragment extends Fragment {
                         String d = DateFormat.format("dd", date) + "/" + DateFormat.format("MM", date) + "/" + DateFormat.format("yyyy", date);
                         String category = doc.getString("category");
                         String name = doc.getString("name");
+                        String method = doc.getString("method");
                         long price = 0;
 
                         try {
@@ -200,7 +201,7 @@ public class TransactionFragment extends Fragment {
                                 break;
                         }
 
-                        Transaction transaction = new Transaction(name, d, amount, id, category);
+                        Transaction transaction = new Transaction(name, d, amount, id, category, method);
                         transactions.add(transaction);
                         mAdapter.notifyDataSetChanged();
                     }

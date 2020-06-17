@@ -1,15 +1,16 @@
 package com.example.myapplication.Objects;
 
 public class Transaction {
-    private String name, date, price, category;
+    private String name, date, price, category, method;
     private int id;
 
-    public Transaction(String name, String date, String price, int id, String category) {
+    public Transaction(String name, String date, String price, int id, String category, String method) {
         this.name = name;
         this.date = date;
         this.price = price;
         this.id = id;
         this.category = category;
+        this.method = method;
     }
 
     public String getName() {
@@ -50,5 +51,13 @@ public class Transaction {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
     }
 }

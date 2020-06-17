@@ -14,8 +14,8 @@ import com.example.myapplication.R;
 
 public class DetailActivity extends AppCompatActivity {
 
-    String name, price, date, category;
-    TextView tvName, tvPrice, tvDate;
+    String name, price, date, category, method;
+    TextView tvName, tvPrice, tvDate, tvMethod;
     ImageView image;
     int id;
 
@@ -30,15 +30,18 @@ public class DetailActivity extends AppCompatActivity {
         date = intent.getStringExtra("date");
         id = intent.getIntExtra("id", 0);
         category = intent.getStringExtra("category");
+        method = intent.getStringExtra("method");
 
         tvName = findViewById(R.id.detail_tv_name);
         tvPrice = findViewById(R.id.detail_tv_price);
         tvDate = findViewById(R.id.detail_tv_date);
         image = findViewById(R.id.detail_img_icon);
+        tvMethod = findViewById(R.id.detail_tv_method);
 
         tvName.setText(name);
         tvPrice.setText(price);
         tvDate.setText(date);
+        tvMethod.setText(method);
 
         Glide.with(DetailActivity.this)
                 .load(id)
