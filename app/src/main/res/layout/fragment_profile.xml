@@ -15,109 +15,129 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/profile_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/CleanContainer">
-
-            <TextView
-                android:id="@+id/profile_tv_profile_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/profile_title"
-                android:textColor="@color/colorBlack"
-                style="@style/TVTitle"/>
+            android:layout_marginBottom="0dp"
+            android:paddingVertical="16dp"
+            style="@style/CleanContainer"
+            android:background="@drawable/profile_background">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/profile_layout_img"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_below="@id/profile_tv_profile_title"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="20dp"
-                app:cardCornerRadius="40dp">
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                app:cardCornerRadius="50dp">
 
                 <ImageView
                     android:id="@+id/profile_img"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/logo"/>
+                    android:src="@drawable/profile_icon"/>
 
             </androidx.cardview.widget.CardView>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_toEndOf="@id/profile_layout_img"
-                android:layout_alignParentEnd="true"
-                android:layout_marginHorizontal="20dp"
-                android:paddingVertical="12dp"
-                android:layout_below="@id/profile_tv_profile_title">
+                android:layout_height="wrap_content"
+                android:paddingTop="6dp"
+                android:layout_below="@id/profile_layout_img">
+
                 <TextView
                     android:id="@+id/profile_tv_greeting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_greeting"
-                    android:textColor="@color/colorBlack"/>
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"/>
+
                 <TextView
                     android:id="@+id/profile_tv_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:text="@string/profile_email"/>
+                    android:layout_below="@id/profile_tv_greeting"
+                    android:text="@string/profile_email"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"/>
 
             </RelativeLayout>
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/CleanContainer">
+            android:orientation="vertical"
+            android:background="@color/colorWhite">
 
             <TextView
-                    android:id="@+id/profile_tv_account_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/account_title"
-                    android:textColor="@color/colorBlack"
-                    style="@style/TVTitle"/>
-
-            <LinearLayout
+                android:id="@+id/profile_tv_profile_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profile_tv_account_title"
-                android:orientation="vertical">
+                android:paddingLeft="20dp"
+                android:text="@string/profile_title"
+                android:textColor="@color/colorBlack"
+                android:background="@color/colorWhite"
+                style="@style/ProfileTitle"/>
 
-                <Button
-                    android:id="@+id/profile_btn_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/CleanButtonInline"
-                    android:drawableStart="@drawable/ic_person_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:paddingStart="30dp"
-                    android:text="@string/account_edit"
-                    android:textColor="@color/colorBlack"/>
-=======
-<!--                <Button-->
-<!--                    android:id="@+id/profile_btn_asd"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    style="@style/CleanButtonInline"-->
-<!--                    android:paddingStart="30dp"-->
-<!--                    android:text="@string/account_password"-->
-<!--                    android:textColor="@color/colorBlack"/>-->
+            <Button
+                android:id="@+id/profile_btn_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CleanButtonInlineThin"
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:drawablePadding="10dp"
+                android:paddingStart="30dp"
+                android:text="@string/account_edit"
+                android:textColor="@color/colorBlack"/>
 
-            </LinearLayout>
+            <Button
+                android:id="@+id/profile_btn_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CleanButtonInlineThin"
+                android:drawableStart="@drawable/ic_settings_black_24dp"
+                android:drawablePadding="10dp"
+                android:paddingStart="30dp"
+                android:text="@string/account_settings"
+                android:textColor="@color/colorBlack"/>
 
-        </RelativeLayout>
+            <Button
+                android:id="@+id/profile_btn_help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CleanButtonInlineThin"
+                android:drawableStart="@drawable/ic_help_black_24dp"
+                android:drawablePadding="10dp"
+                android:paddingStart="30dp"
+                android:text="@string/account_help"
+                android:textColor="@color/colorBlack"/>
+
+            <Button
+                android:id="@+id/profile_btn_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CleanButtonInlineThin"
+                android:drawableStart="@drawable/ic_info_black_24dp"
+                android:drawablePadding="10dp"
+                android:paddingStart="30dp"
+                android:text="@string/account_about"
+                android:textColor="@color/colorBlack"/>
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/profile_btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
+            android:layout_margin="12dp"
+            android:layout_alignParentBottom="true"
             style="@style/CleanButton"
             android:background="@drawable/rounded_button_red"
             android:text="@string/button_logout"

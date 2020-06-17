@@ -57,7 +57,7 @@
 
         <TextView
             android:id="@+id/home_balance_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/home_balance_title"
             android:textColor="@color/colorBlack"
@@ -121,7 +121,7 @@
 
         <TextView
             android:id="@+id/home_history_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/home_history_title"
             android:textColor="@color/colorBlack"
@@ -148,7 +148,7 @@
                 android:id="@+id/home_rv_history"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/item_transaction"
+                tools:listitem="@layout/item_transaction_simplified"
                 tools:itemCount="7">
 
             </androidx.recyclerview.widget.RecyclerView>

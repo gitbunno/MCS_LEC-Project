@@ -112,12 +112,13 @@ public class RegisterActivity extends AppCompatActivity {
                 tilConfirm.setError(null);
             }
 
-            if(!valid) return;
+            if(!valid){
+                progressDialog.dismiss();
+                return;
+            }
 
             firebaseCreate(email, password, username);
 
-            //Matiin progress bar
-            progressDialog.dismiss();
         }
     };
 
@@ -160,8 +161,10 @@ public class RegisterActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(RegisterActivity.this, "Error Register", Toast.LENGTH_SHORT).show();
+                            tilEmail.setError("This email is connected to another account");
+                            txtEmail.setText("");
                         }
+                        progressDialog.dismiss();
                     }
                 });
     }

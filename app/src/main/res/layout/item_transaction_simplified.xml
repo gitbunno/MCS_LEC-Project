@@ -6,48 +6,49 @@
     android:orientation="horizontal">
 
     <RelativeLayout
-        android:id="@+id/item_transaction_layout"
+        android:id="@+id/item_mini_transaction_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         style="@style/CleanButtonInline">
 
         <ImageView
-            android:id="@+id/item_transaction_img"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:id="@+id/item_mini_transaction_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginRight="12dp"
             android:layout_alignParentStart="true"
             android:src="@drawable/logo"/>
 
         <TextView
-            android:id="@+id/item_transaction_name"
+            android:id="@+id/item_mini_transaction_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/item_transaction_img"
+            android:layout_toRightOf="@id/item_mini_transaction_img"
             android:ellipsize="end"
             android:lines="1"
             android:text="Item Name"
-            android:textSize="10pt"
+            android:textSize="8pt"
             android:textColor="@color/colorBlack"/>
 
         <TextView
-            android:id="@+id/item_transaction_date"
+            android:id="@+id/item_mini_transaction_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/item_transaction_img"
-            android:layout_below="@id/item_transaction_name"
+            android:layout_toRightOf="@id/item_mini_transaction_img"
+            android:layout_below="@id/item_mini_transaction_name"
             android:text="dd/mm/yyyy"
             android:textSize="7pt"/>
 
         <TextView
-            android:id="@+id/item_transaction_price"
+            android:id="@+id/item_mini_transaction_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignBottom="@id/item_mini_transaction_date"
             android:layout_alignParentEnd="true"
             android:text="Price"
             android:textSize="8pt"/>
+
     </RelativeLayout>
 
 </LinearLayout>

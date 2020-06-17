@@ -26,6 +26,7 @@ import com.example.myapplication.Activities.MainActivity;
 import com.example.myapplication.Activities.RegisterActivity;
 import com.example.myapplication.Adapters.AccountAdapter;
 import com.example.myapplication.Adapters.TransactionAdapter;
+import com.example.myapplication.Adapters.TransactionMiniAdapter;
 import com.example.myapplication.Dialogs.EditBalanceDialog;
 import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
@@ -59,7 +60,7 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    TransactionAdapter mAdapter;
+    TransactionMiniAdapter mAdapter;
 //    TransactionAdapter nAdapter;
     RecyclerView mRecyclerView, nRecyclerView;
     LinearLayoutManager mLinearLayoutManager, nLinearLayoutManager;
@@ -151,7 +152,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        mAdapter = new TransactionAdapter(v.getContext(), transactions);
+        mAdapter = new TransactionMiniAdapter(v.getContext(), transactions);
         mLinearLayoutManager = new LinearLayoutManager(v.getContext());
         mRecyclerView = v.findViewById(R.id.home_rv_history);
         mRecyclerView.setHasFixedSize(true);

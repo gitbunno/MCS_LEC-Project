@@ -1,21 +1,25 @@
 package com.example.myapplication.Fragments;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Activities.EditActivity;
 import com.example.myapplication.Activities.LoginActivity;
+import com.example.myapplication.Activities.SplashActivity;
 import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -72,6 +76,7 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -98,9 +103,15 @@ public class ProfileFragment extends Fragment {
         txtGreetings.setText("Hello, " + user.getDisplayName());
         txtEmail.setText(user.getEmail());
 
+        RelativeLayout relativeLayout = v.findViewById(R.id.profile_layout);
+        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(0);
+        animationDrawable.setExitFadeDuration(1000);
+        animationDrawable.start();
+
         Glide.with(v)
                 .load(user.getPhotoUrl())
-                .placeholder(R.drawable.logo)
+                .placeholder(R.drawable.profile_icon)
                 .centerCrop()
                 .into(imageView);
 

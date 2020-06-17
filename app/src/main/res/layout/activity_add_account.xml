@@ -6,9 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Activities.AddAccountActivity">
 
+    <TextView
+        android:id="@+id/add_account_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_title"
+        android:textColor="@color/colorBlack"
+        style="@style/TVTitle"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/add_account_tv_title"
         android:orientation="vertical"
         android:padding="20dp">
 

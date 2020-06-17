@@ -136,6 +136,8 @@ public class LoginActivity extends AppCompatActivity {
 
             if(valid){
                 firebaseAuthNormal(email, password);
+            }else{
+                progressDialog.dismiss();
             }
 
         }
@@ -173,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthGoogle(account.getIdToken());
             } catch (ApiException e) {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+                tilPassword.setError("Login failed");
             }
 
         }
@@ -191,8 +193,9 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();
-                        }  
+                            tilPassword.setError("Login failed");
+                        }
+                        progressDialog.dismiss();
                     }
                 });
     }
@@ -207,8 +210,9 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            
+
                         }
+                        progressDialog.dismiss();
                     }
                 });
     }

@@ -47,17 +47,17 @@ public class EditActivity extends AppCompatActivity {
         user = auth.getCurrentUser();
 
         tilUsername = findViewById(R.id.register_til_username);
-        tilPassword = findViewById(R.id.edit_til_password);
-        tilConfirm = findViewById(R.id.edit_til_cpassword);
+        tilPassword = findViewById(R.id.edit_profile_til_password);
+        tilConfirm = findViewById(R.id.edit_profile_til_cpassword);
 
-        etUsername = findViewById(R.id.edit_et_name);
-        etPassword = findViewById(R.id.edit_et_password);
-        etConfirm = findViewById(R.id.edit_et_cpassword);
+        etUsername = findViewById(R.id.edit_profile_et_name);
+        etPassword = findViewById(R.id.edit_profile_et_password);
+        etConfirm = findViewById(R.id.edit_profile_et_cpassword);
 
         etUsername.setText(user.getDisplayName());
 
-        btnConfirm = findViewById(R.id.edit_btn_confirm);
-        btnCancel = findViewById(R.id.edit_btn_cancel);
+        btnConfirm = findViewById(R.id.edit_profile_btn_confirm);
+        btnCancel = findViewById(R.id.edit_profile_btn_cancel);
 
         btnConfirm.setOnClickListener(confirmListener);
         btnCancel.setOnClickListener(cancelListener);
