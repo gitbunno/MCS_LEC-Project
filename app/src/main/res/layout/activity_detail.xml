@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.DetailActivity"
-    android:background="#7CDEDC"
+    android:background="#ffb7c5"
     android:padding="20dp">
     <ImageView
         android:id="@+id/detail_img_icon"
@@ -14,7 +14,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginBottom="-50dp"
         android:translationZ="10dp"
-
         android:layout_centerHorizontal="true"
         android:src="@drawable/img_debt"
 
@@ -48,14 +47,25 @@
             android:fontFamily="sans-serif-medium"
             android:text="Nama"
             android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
             android:textSize="26sp" />
 
         <TextView
-            android:id="@+id/detail_tv_date"
+        android:id="@+id/detail_tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Date"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        />
+        <TextView
+            android:id="@+id/detail_tv_method"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:text="Date"
+            android:text="Method"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_marginBottom="20dp"/>
