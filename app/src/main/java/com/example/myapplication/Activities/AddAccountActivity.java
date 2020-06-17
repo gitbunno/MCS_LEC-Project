@@ -55,6 +55,8 @@ public class AddAccountActivity extends AppCompatActivity {
             progressDialog.show();
             //Set Content View
             progressDialog.setContentView(R.layout.progress_dialog);
+            //Set Tapping Out False
+            progressDialog.setCancelable(false);
             //Set Transparent Background
             progressDialog.getWindow().setBackgroundDrawableResource(
                     android.R.color.transparent

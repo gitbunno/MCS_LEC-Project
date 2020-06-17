@@ -117,6 +117,8 @@ public class TransactionFragment extends Fragment {
         progressDialog.show();
         //Set Content View
         progressDialog.setContentView(R.layout.progress_dialog);
+        //Set Tapping Out False
+        progressDialog.setCancelable(false);
         //Set Transparent Background
         progressDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
@@ -129,8 +131,8 @@ public class TransactionFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-        add = v.findViewById(R.id.transaction_fab_add);
-        add.setOnClickListener(addListener);
+//        add = v.findViewById(R.id.transaction_fab_add);
+//        add.setOnClickListener(addListener);
 
         no = v.findViewById(R.id.transactions_tv_noitem);
 

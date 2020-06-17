@@ -1,10 +1,12 @@
 package com.example.myapplication.Fragments;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ import com.example.myapplication.Activities.MainActivity;
 import com.example.myapplication.Activities.RegisterActivity;
 import com.example.myapplication.Adapters.AccountAdapter;
 import com.example.myapplication.Adapters.TransactionAdapter;
+import com.example.myapplication.Dialogs.EditBalanceDialog;
 import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -64,8 +68,10 @@ public class HomeFragment extends Fragment {
     FirebaseFirestore db;
     FirebaseAuth auth;
     FirebaseUser user;
-    TextView tvBalance, no;
+    public static TextView tvBalance, no;
     ProgressDialog progressDialog;
+    LinearLayout balanceLayout;
+    long balance;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -120,12 +126,17 @@ public class HomeFragment extends Fragment {
         progressDialog.show();
         //Set Content View
         progressDialog.setContentView(R.layout.progress_dialog);
+        //Set Tapping Out False
+        progressDialog.setCancelable(false);
         //Set Transparent Background
         progressDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
 
         tvBalance = v.findViewById(R.id.home_balance);
+        balanceLayout = v.findViewById(R.id.home_balance_layout);
+
+        balanceLayout.setOnClickListener(layoutListener);
 
         DocumentReference ref = db.collection("users").document(user.getUid());
         ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -133,7 +144,8 @@ public class HomeFragment extends Fragment {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot doc = task.getResult();
-                    long balance = doc.getLong("balance");
+                    long bal = doc.getLong("balance");
+                    balance = bal;
                     tvBalance.setText("IDR " + balance);
                 }
             }
@@ -207,4 +219,12 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+    private View.OnClickListener layoutListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            DialogFragment fragment = new EditBalanceDialog(balance);
+            fragment.show(getParentFragmentManager(), "Dialog");
+        }
+    };
 }
