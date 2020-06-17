@@ -1,6 +1,7 @@
 package com.example.myapplication.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +14,10 @@ import com.example.myapplication.R;
 
 public class DetailActivity extends AppCompatActivity {
 
-    String name, price, date, url;
+    String name, price, date, category;
     TextView tvName, tvPrice, tvDate;
     ImageView image;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,8 @@ public class DetailActivity extends AppCompatActivity {
         name = intent.getStringExtra("name");
         price = intent.getStringExtra("price");
         date = intent.getStringExtra("date");
-        url = intent.getStringExtra("url");
+        id = intent.getIntExtra("id", 0);
+        category = intent.getStringExtra("category");
 
         tvName = findViewById(R.id.detail_tv_name);
         tvPrice = findViewById(R.id.detail_tv_price);
@@ -38,10 +41,21 @@ public class DetailActivity extends AppCompatActivity {
         tvDate.setText(date);
 
         Glide.with(DetailActivity.this)
-                .load(url)
+                .load(id)
                 .placeholder(R.drawable.logo)
                 .centerCrop()
                 .into(image);
+
+        switch(category) {
+            case "Income":
+            case "Paid Debt":
+                tvPrice.setTextColor(ContextCompat.getColor(this, R.color.colorGreen));
+                break;
+            case "Expense":
+            case "Debt":
+                tvPrice.setTextColor(ContextCompat.getColor(this, R.color.colorRed));
+                break;
+        }
 
     }
 }
