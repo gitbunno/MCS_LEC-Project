@@ -23,6 +23,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -132,7 +133,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 //date pake timestamp
 //                dummy.put("date", etDate.getText().toString());
                 dummy.put("amount", Integer.parseInt(price));
-                dummy.put("timestamp", FieldValue.serverTimestamp());
+                dummy.put("timestamp", Calendar.getInstance().getTime());
                 dummy.put("category", category);
                 dummy.put("image", image);
 

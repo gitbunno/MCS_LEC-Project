@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -22,12 +23,16 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.luseen.spacenavigation.SpaceItem;
+import com.luseen.spacenavigation.SpaceNavigationView;
+import com.luseen.spacenavigation.SpaceOnClickListener;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    SpaceNavigationView navigationView;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth;
     FirebaseUser user;
@@ -36,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        navigationView = findViewById(R.id.space);
+        navigationView.initWithSaveInstanceState(savedInstanceState);
+        navigationView.addSpaceItem(new SpaceItem("",R.drawable.ic_home_black_24dp));
+        navigationView.addSpaceItem(new SpaceItem("",R.drawable.ic_account_balance_wallet_black_24dp));
+        navigationView.addSpaceItem(new SpaceItem("",R.drawable.ic_monetization_on_black_24dp));
+        navigationView.addSpaceItem(new SpaceItem("",R.drawable.ic_person_black_24dp));
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -49,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
                     DocumentSnapshot snapshot = task.getResult();
                     if (!snapshot.exists()) {
                         db.collection("users").document(user.getUid()).set(data);
@@ -64,40 +76,78 @@ public class MainActivity extends AppCompatActivity {
 //                    ref.collection("transactions").add(dummy);
 //                    ref.update("balance", FieldValue.increment((int)dummy.get("amount")));
 
-                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navbar);
-                    bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+//                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navbar);
+//                    bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
                 }
             }
         });
+
+        navigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
+
+            Fragment fragment = null;
+            @Override
+            public void onCentreButtonClick() {
+                //Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                //navigationView.setCentreButtonSelectable(true);
+                Intent intent = new Intent(MainActivity.this, AddTransactionActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onItemClick(int itemIndex, String itemName) {
+                //Toast.makeText(MainActivity.this, itemIndex+ " " + itemName, Toast.LENGTH_SHORT).show();
+                switch (itemIndex) {
+                    case 0:
+                        fragment = new HomeFragment();
+                        break;
+                    case 1:
+                        fragment = new WalletFragment();
+                        break;
+                    case 2:
+                        fragment = new TransactionFragment();
+                        break;
+                    case 3:
+                        fragment = new ProfileFragment();
+                        break;
+                }
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+            }
+
+            @Override
+            public void onItemReselected(int itemIndex, String itemName) {
+                //Toast.makeText(MainActivity.this, itemIndex+ " " + itemName, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment fragment = null;
-
-                    switch (item.getItemId()){
-                        case R.id.nav_home:
-                            fragment = new HomeFragment();
-                            break;
-                        case R.id.nav_wallet:
-                            fragment = new WalletFragment();
-                            break;
-                        case R.id.nav_transactions:
-                            fragment = new TransactionFragment();
-                            break;
-                        case R.id.nav_profile:
-                            fragment = new ProfileFragment();
-                            break;
-                    }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-
-                    return true;
-                }
-            };
+//    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+//            new BottomNavigationView.OnNavigationItemSelectedListener() {
+//                @Override
+//                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                    Fragment fragment = null;
+//
+//                    switch (item.getItemId()) {
+//                        case R.id.nav_home:
+//                            fragment = new HomeFragment();
+//                            break;
+//                        case R.id.nav_wallet:
+//                            fragment = new WalletFragment();
+//                            break;
+//                        case R.id.nav_transactions:
+//                            fragment = new TransactionFragment();
+//                            break;
+//                        case R.id.nav_profile:
+//                            fragment = new ProfileFragment();
+//                            break;
+//                    }
+//
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+//
+//                    return true;
+//                }
+//            };
 }

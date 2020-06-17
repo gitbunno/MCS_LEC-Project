@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -162,11 +164,9 @@ public class TransactionFragment extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot doc : task.getResult()) {
-//                        Toast.makeText(v.getContext(), "Name: " + doc.getString("name") + " ID: " + doc.getId(), Toast.LENGTH_SHORT).show();
-                        Date date = doc.getDate("timestamp");
-//                        Date date = new Date(doc.getDate("timestamp"));
-                        String d = (date.getDay()+7) + "/" + (date.getMonth()+1) + "/" + (date.getYear()+1900);
-//                        Toast.makeText(v.getContext(), "date: " + d, Toast.LENGTH_SHORT).show();
+                        Timestamp time = doc.getTimestamp("timestamp");
+                        Date date = time.toDate();
+                        String d = DateFormat.format("dd", date) + "/" + DateFormat.format("MM", date) + "/" + DateFormat.format("yyyy", date);
                         Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), doc.getString("image"));
                         transactions.add(transaction);
                         mAdapter.notifyDataSetChanged();

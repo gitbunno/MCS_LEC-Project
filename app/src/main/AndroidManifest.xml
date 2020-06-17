@@ -9,12 +9,16 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".Activities.AddTransactionActivity"></activity>
-        <activity android:name=".Activities.AddAccountActivity" />
-        <activity android:name=".Activities.DetailActivity" />
-        <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.AddTransactionActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Activities.AddAccountActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activities.DetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activities.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Activities.RegisterActivity"
             android:label="Registration" />
@@ -27,7 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.EditActivity" />
+        <activity android:name=".Activities.EditActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
