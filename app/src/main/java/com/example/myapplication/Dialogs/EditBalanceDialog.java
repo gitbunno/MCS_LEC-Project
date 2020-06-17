@@ -19,6 +19,7 @@ import com.example.myapplication.Fragments.HomeFragment;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -36,7 +37,7 @@ public class EditBalanceDialog extends DialogFragment {
     FirebaseUser user;
     DocumentReference ref;
     Context context;
-    EditText newBal;
+    TextInputEditText newBal;
 
     private long balance;
     private TextView bal;
@@ -54,13 +55,12 @@ public class EditBalanceDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_edit_balance, null);
-        newBal = view.findViewById(R.id.edit_balance_balance);
+        newBal = view.findViewById(R.id.edit_balance_et_balance);
         newBal.setText(String.valueOf(balance));
 
         ref = firestore.collection("users").document(user.getUid());
 
-
-        builder.setView(view)
+        builder.setView(view).setTitle("Set Balance")
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

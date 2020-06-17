@@ -39,11 +39,47 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/add_transaction_spinner"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_class_black_24dp"/>
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Category"
+                android:textSize="18sp"
+                android:textColor="@color/colorBlack"/>
+           <TextView
+               android:layout_width="0dip"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="Method"
+               android:textSize="18sp"
+               android:textColor="@color/colorBlack"
+               />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/spinner_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <Spinner
+                android:id="@+id/add_transaction_spinner"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_class_black_24dp" />
+            <Spinner
+                android:id="@+id/add_method_spinner"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_transaction_til_price"
@@ -61,7 +97,6 @@
                 style="@style/TIForm"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
             android:id="@+id/add_btn_confirm"

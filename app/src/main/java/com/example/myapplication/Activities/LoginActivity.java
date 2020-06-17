@@ -133,7 +133,6 @@ public class LoginActivity extends AppCompatActivity {
                 tilPassword.setError(null);
             }
 
-
             if(valid){
                 firebaseAuthNormal(email, password);
             }else{

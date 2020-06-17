@@ -56,4 +56,12 @@
         <item>Paid Debt</item>
     </string-array>
 
+    <string-array name="method">
+        <item>Cash</item>
+        <item>Credit</item>
+        <item>Digital Wallets</item>
+        <item>Debit</item>
+        <item>Checks</item>
+    </string-array>
+
 </resources>
