@@ -6,8 +6,8 @@
     <string name="button_logout">Logout</string>
     <string name="button_confirm">Confirm</string>
     <string name="button_cancel">Cancel</string>
-    <string name="tv_register">Don\'t have an account? Register Now</string>
-    <string name="tv_login">Already have an account? Login Now</string>
+    <string name="tv_register">Don\'t have an account? <u>Register Now</u></string>
+    <string name="tv_login">Already have an account? <u>Login Now</u></string>
 
     <string name="menu_home">Home</string>
     <string name="menu_wallet">Wallet</string>

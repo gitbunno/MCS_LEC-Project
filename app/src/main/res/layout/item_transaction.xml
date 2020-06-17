@@ -48,7 +48,6 @@
             android:text="Price"
             android:textSize="8pt"/>
 
-
     </RelativeLayout>
 
 </LinearLayout>

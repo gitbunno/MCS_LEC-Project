@@ -9,6 +9,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Activities.AddTransactionActivity"></activity>
         <activity android:name=".Activities.AddAccountActivity" />
         <activity android:name=".Activities.DetailActivity" />

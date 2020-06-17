@@ -10,7 +10,9 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navbar"/>
+        android:layout_above="@id/bottom_navbar">
+
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navbar"
@@ -19,4 +21,29 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/navmenu"
         android:background="?android:attr/windowBackground"/>
+
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:id="@+id/container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        &lt;!&ndash; Other components and views &ndash;&gt;-->
+
+<!--        <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--            android:id="@+id/bar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            app:menu="@menu/navmenu"-->
+<!--            style="@style/Widget.MaterialComponents.BottomAppBar.Colored" />-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_person_black_24dp"-->
+<!--            app:layout_anchor="@id/bar" />-->
+
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
 </RelativeLayout>
