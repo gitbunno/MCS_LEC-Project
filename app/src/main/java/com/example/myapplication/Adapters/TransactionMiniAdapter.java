@@ -17,6 +17,7 @@ import com.example.myapplication.R;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TransactionMiniAdapter extends RecyclerView.Adapter<TransactionMiniAdapter.ViewHolder>{
@@ -58,7 +59,8 @@ public class TransactionMiniAdapter extends RecyclerView.Adapter<TransactionMini
         final String name = transactions.get(position).getName();
         final String price = transactions.get(position).getPrice();
         final String date = transactions.get(position).getDate();
-        final String url = transactions.get(position).getUrl();
+        final int id = transactions.get(position).getId();
+        final String category = transactions.get(position).getCategory();
         holder.tvName.setText(name);
         holder.tvPrice.setText(price);
         holder.tvDate.setText(date);
@@ -70,16 +72,27 @@ public class TransactionMiniAdapter extends RecyclerView.Adapter<TransactionMini
                 intent.putExtra("name", name);
                 intent.putExtra("date", date);
                 intent.putExtra("price", price);
-                intent.putExtra("url", url);
+                intent.putExtra("url", id);
                 mContext.startActivity(intent);
             }
         });
 
         Glide.with(mContext)
-                .load(transactions.get(position).getUrl())
+                .load(transactions.get(position).getId())
                 .centerCrop()
                 .placeholder(R.drawable.bunnocrop)
                 .into(holder.imageView);
+
+        switch(category) {
+            case "Income":
+            case "Paid Debt":
+                holder.tvPrice.setTextColor(ContextCompat.getColor(mContext, R.color.colorGreen));
+                break;
+            case "Expense":
+            case "Debt":
+                holder.tvPrice.setTextColor(ContextCompat.getColor(mContext, R.color.colorRed));
+                break;
+        }
     }
 
     @Override

@@ -1,16 +1,15 @@
 package com.example.myapplication.Objects;
 
-import android.media.Image;
-
 public class Transaction {
-    private String name, date, price;
-    private String url;
+    private String name, date, price, category;
+    private int id;
 
-    public Transaction(String name, String date, String price, String url) {
+    public Transaction(String name, String date, String price, int id, String category) {
         this.name = name;
         this.date = date;
         this.price = price;
-        this.url = url;
+        this.id = id;
+        this.category = category;
     }
 
     public String getName() {
@@ -37,11 +36,19 @@ public class Transaction {
         this.price = price;
     }
 
-    public String getUrl() {
-        return url;
+    public int getId() {
+        return id;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
