@@ -98,6 +98,26 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_transaction_til_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_transaction_et_desc"
+                style="@style/TIForm"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:gravity="top|left"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/add_btn_confirm"
             android:layout_width="match_parent"

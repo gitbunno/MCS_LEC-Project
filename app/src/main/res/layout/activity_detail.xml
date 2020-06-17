@@ -5,85 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.DetailActivity"
-    android:background="@color/colorDisabledLight">
+    android:background="#7CDEDC"
+    android:padding="20dp">
+    <ImageView
+        android:id="@+id/detail_img_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="-50dp"
+        android:translationZ="10dp"
 
-    <RelativeLayout
-        android:id="@+id/detail_header"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/img_debt"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/detail_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/CleanButtonInline">
-
-        <ImageView
-            android:id="@+id/detail_img_icon"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/profile_icon"
-            android:layout_margin="6dp"/>
-        <!--        <TextView-->
-<!--            android:id="@+id/detail_tv_category"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Category"-->
-<!--            android:paddingTop="6dp"-->
-<!--            android:layout_toRightOf="@id/detail_img_icon"-->
-<!--            android:layout_below="@id/detail_tv_name"/>-->
-        <TextView
-            android:id="@+id/detail_tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/detail_img_icon"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@+id/detail_img_icon"
-            android:layout_toRightOf="@id/detail_img_icon"
-            android:text="Transaction Name"
-            android:textColor="@color/colorBlack"
-            android:textStyle="bold"
-            android:maxEms="8"
-            android:singleLine="false"
-            android:textSize="18dp"/>
-
-        <TextView
-            android:id="@+id/detail_tv_method"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/detail_tv_name"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@+id/detail_img_icon"
-            android:layout_toRightOf="@id/detail_img_icon"
-            android:text="Via Cash"
-            android:textColor="@color/colorBlack"
-            android:textSize="16dp" />
+        android:layout_below="@id/detail_img_icon"
+        android:layout_margin="0dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/colorWhite"
+        android:orientation="vertical"
+        android:paddingTop="70dp">
 
         <TextView
             android:id="@+id/detail_tv_price"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/detail_img_icon"
-            android:layout_alignParentEnd="true"
-            android:gravity="center_vertical"
-            android:layout_marginTop="11dp"
-            android:paddingEnd="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="IDR 420000"
+            android:textAlignment="center"
             android:textColor="@color/colorBlack"
-            android:text="Price"
-            android:textSize="16dp"/>
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/detail_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Nama"
+            android:textAlignment="center"
+            android:textSize="26sp" />
 
         <TextView
             android:id="@+id/detail_tv_date"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/detail_tv_price"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/colorBlack"
-            android:paddingEnd="12dp"
-            android:text="dd/mm/yyyy"
-            android:textSize="16dp" />
-    </RelativeLayout>
+            android:fontFamily="sans-serif-medium"
+            android:text="Date"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/detail_linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_linear"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/colorWhite"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/detail_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Description"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </RelativeLayout>

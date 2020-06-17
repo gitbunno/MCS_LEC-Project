@@ -16,4 +16,8 @@
     <color name="colorLighterRed">#EAA</color>
     <color name="colorBlack">#000</color>
     <color name="colorTransparent">#0000</color>
+    <color name="colorIncome">#ffb7c5</color>
+    <color name="colorExpense">#DAFF7D</color>
+    <color name="colorPay">#AB87FF</color>
+    <color name="colorDebt">#7CDEDC</color>
 </resources>
