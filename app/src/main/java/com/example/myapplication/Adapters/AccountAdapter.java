@@ -2,12 +2,10 @@ package com.example.myapplication.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -72,7 +70,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
         });
 
         Glide.with(mContext)
-                .load(transactions.get(position).getUrl())
+                .load(transactions.get(position).getId())
                 .centerCrop()
                 .placeholder(R.drawable.bunnocrop)
                 .into(holder.imageView);

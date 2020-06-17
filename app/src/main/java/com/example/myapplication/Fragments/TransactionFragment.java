@@ -169,7 +169,38 @@ public class TransactionFragment extends Fragment {
                         Timestamp time = doc.getTimestamp("timestamp");
                         Date date = time.toDate();
                         String d = DateFormat.format("dd", date) + "/" + DateFormat.format("MM", date) + "/" + DateFormat.format("yyyy", date);
-                        Transaction transaction = new Transaction(doc.getString("name"), d, "IDR " + doc.getLong("amount"), doc.getString("image"));
+                        String category = doc.getString("category");
+                        String name = doc.getString("name");
+                        long price = 0;
+
+                        try {
+                            price = doc.getLong("amount");
+                        } catch (Exception e) {
+                            price = 0;
+                        }
+                        String amount = "";
+                        int id = 0;
+
+                        switch(category) {
+                            case "Income":
+                                amount = "+IDR " + price;
+                                id = R.drawable.img_income;
+                                break;
+                            case "Paid Debt":
+                                amount = "+IDR " + price;
+                                id = R.drawable.img_pay;
+                                break;
+                            case "Expense":
+                                amount = "-IDR " + price;
+                                id = R.drawable.img_expense;
+                                break;
+                            case "Debt":
+                                amount = "-IDR " + price;
+                                id = R.drawable.img_debt;
+                                break;
+                        }
+
+                        Transaction transaction = new Transaction(name, d, amount, id, category);
                         transactions.add(transaction);
                         mAdapter.notifyDataSetChanged();
                     }

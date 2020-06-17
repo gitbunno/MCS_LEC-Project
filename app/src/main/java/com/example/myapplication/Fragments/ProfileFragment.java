@@ -100,7 +100,7 @@ public class ProfileFragment extends Fragment {
         txtGreetings = v.findViewById(R.id.profile_tv_greeting);
         txtEmail = v.findViewById(R.id.profile_tv_email);
 
-        txtGreetings.setText("Hello, " + user.getDisplayName());
+//        txtGreetings.setText(user.getDisplayName());
         txtEmail.setText(user.getEmail());
 
         RelativeLayout relativeLayout = v.findViewById(R.id.profile_layout);
@@ -141,6 +141,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        txtGreetings.setText("Hello, " + user.getDisplayName());
+        txtGreetings.setText(user.getDisplayName());
     }
 }
