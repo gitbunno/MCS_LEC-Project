@@ -15,5 +15,5 @@
     <color name="colorLightRed">#E55</color>
     <color name="colorLighterRed">#EAA</color>
     <color name="colorBlack">#000</color>
-    <color name="colorTransparent">#5000</color>
+    <color name="colorTransparent">#0000</color>
 </resources>

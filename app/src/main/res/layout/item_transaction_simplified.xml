@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/item_mini_transaction_img"
-            android:layout_below="@id/item_mini_transaction_name"
+            android:layout_alignParentBottom="true"
             android:text="dd/mm/yyyy"
             android:textSize="7pt"/>
 
@@ -44,7 +44,7 @@
             android:id="@+id/item_mini_transaction_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/item_mini_transaction_date"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:text="Price"
             android:textSize="8pt"/>
