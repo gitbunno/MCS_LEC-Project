@@ -42,7 +42,7 @@
             android:textStyle="bold"
             android:maxEms="8"
             android:singleLine="false"
-            android:textSize="16dp"/>
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/detail_tv_method"
@@ -65,7 +65,7 @@
             android:layout_alignTop="@+id/detail_img_icon"
             android:layout_alignParentEnd="true"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="11dp"
             android:paddingEnd="12dp"
             android:textColor="@color/colorBlack"
             android:text="Price"
