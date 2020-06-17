@@ -72,7 +72,8 @@ public class TransactionMiniAdapter extends RecyclerView.Adapter<TransactionMini
                 intent.putExtra("name", name);
                 intent.putExtra("date", date);
                 intent.putExtra("price", price);
-                intent.putExtra("url", id);
+                intent.putExtra("id", id);
+                intent.putExtra("category", category);
                 mContext.startActivity(intent);
             }
         });
