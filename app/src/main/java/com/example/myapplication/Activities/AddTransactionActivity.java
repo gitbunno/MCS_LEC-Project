@@ -34,7 +34,7 @@ public class AddTransactionActivity extends AppCompatActivity {
     Button btnConfirm, btnCancel;
     ProgressDialog progressDialog;
     Spinner spinner;
-
+    Spinner spinner_method;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth;
     FirebaseUser user;
@@ -62,14 +62,18 @@ public class AddTransactionActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(cancelListener);
 
         spinner = (Spinner) findViewById(R.id.add_transaction_spinner);
+        spinner_method=(Spinner) findViewById(R.id.add_method_spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.categories, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter_method = ArrayAdapter.createFromResource(this,
+                R.array.method, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter_method.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-
+        spinner_method.setAdapter(adapter_method);
     }
 
 
