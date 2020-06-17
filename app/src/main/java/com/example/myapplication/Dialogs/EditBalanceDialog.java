@@ -67,7 +67,7 @@ public class EditBalanceDialog extends DialogFragment {
                         Map<String, Object> map = new HashMap<>();
                         map.put("balance", Long.parseLong(newBal.getText().toString()));
                         ref.update(map);
-                        Toast.makeText(getActivity(), "Save", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), "Save", Toast.LENGTH_SHORT).show();
                         HomeFragment.tvBalance.setText("IDR " + newBal.getText().toString());
                         HomeFragment.balance = Long.parseLong(newBal.getText().toString());
                     }
@@ -75,7 +75,7 @@ public class EditBalanceDialog extends DialogFragment {
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
                     }
                 });
         return builder.create();

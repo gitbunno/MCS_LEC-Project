@@ -38,7 +38,7 @@
     <string name="input_date_of_birth">Date of Birth</string>
     <string name="button_select_date">SELECT DATE</string>
 
-    <string name="profile_greeting">xx</string>
+    <string name="profile_greeting">Wallet</string>
     <string name="profile_email">Email</string>
 
     <string name="account_edit">Edit Profile</string>

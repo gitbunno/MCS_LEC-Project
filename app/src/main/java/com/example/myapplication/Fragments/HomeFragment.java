@@ -3,6 +3,8 @@ package com.example.myapplication.Fragments;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,7 @@ import com.example.myapplication.Adapters.AccountAdapter;
 import com.example.myapplication.Adapters.TransactionAdapter;
 import com.example.myapplication.Adapters.TransactionMiniAdapter;
 import com.example.myapplication.Dialogs.EditBalanceDialog;
+import com.example.myapplication.LayoutManagers.CustomLinearLayoutManager;
 import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -202,7 +205,7 @@ public class HomeFragment extends Fragment {
         ref = db.collection("users").document(user.getUid());
         CollectionReference cRef = ref.collection("transactions");
         cRef.orderBy("timestamp", Query.Direction.DESCENDING)
-                .limit(10)
+                .limit(8)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {

@@ -136,7 +136,6 @@ public class ProfileFragment extends Fragment {
     public void onResume() {
         super.onResume();
         txtGreetings.setText(user.getDisplayName());
-
         Glide.with(this.getActivity())
                 .load(user.getPhotoUrl())
                 .placeholder(R.drawable.profile_icon)
