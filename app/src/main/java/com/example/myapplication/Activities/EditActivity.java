@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -34,6 +36,7 @@ public class EditActivity extends AppCompatActivity {
     TextInputLayout tilUsername, tilPassword, tilConfirm;
     EditText etUsername, etPassword, etConfirm;
     Button btnConfirm, btnCancel;
+    ImageView ivImage;
     FirebaseAuth auth;
     FirebaseUser user;
     ProgressDialog progressDialog;
@@ -58,6 +61,9 @@ public class EditActivity extends AppCompatActivity {
 
         btnConfirm = findViewById(R.id.edit_profile_btn_confirm);
         btnCancel = findViewById(R.id.edit_profile_btn_cancel);
+
+        ivImage = findViewById(R.id.edit_profile_image);
+        Glide.with(this).load(user.getPhotoUrl()).placeholder(R.drawable.profile_icon).into(ivImage);
 
         btnConfirm.setOnClickListener(confirmListener);
         btnCancel.setOnClickListener(cancelListener);

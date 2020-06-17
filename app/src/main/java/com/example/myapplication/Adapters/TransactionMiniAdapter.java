@@ -62,6 +62,7 @@ public class TransactionMiniAdapter extends RecyclerView.Adapter<TransactionMini
         final int id = transactions.get(position).getId();
         final String category = transactions.get(position).getCategory();
         final String method = transactions.get(position).getMethod();
+        final String desc = transactions.get(position).getDesc();
         holder.tvName.setText(name);
         holder.tvPrice.setText(price);
         holder.tvDate.setText(date);
@@ -76,6 +77,7 @@ public class TransactionMiniAdapter extends RecyclerView.Adapter<TransactionMini
                 intent.putExtra("id", id);
                 intent.putExtra("category", category);
                 intent.putExtra("method", method);
+                intent.putExtra("desc", desc);
                 mContext.startActivity(intent);
             }
         });

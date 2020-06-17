@@ -30,7 +30,7 @@ import java.util.Map;
 public class AddTransactionActivity extends AppCompatActivity {
 
     TextInputLayout tilName, tilDate, tilPrice;
-    EditText etName, etDate, etPrice;
+    EditText etName, etDate, etPrice, etDesc;
     Button btnConfirm, btnCancel;
     ProgressDialog progressDialog;
     Spinner spinner;
@@ -54,6 +54,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         etName = findViewById(R.id.add_transaction_et_name);
 //        etDate = findViewById(R.id.add_transaction_et_date);
         etPrice = findViewById(R.id.add_transaction_et_price);
+        etDesc = findViewById(R.id.add_transaction_et_desc);
 
         btnConfirm = findViewById(R.id.add_btn_confirm);
         btnCancel = findViewById(R.id.add_btn_cancel);
@@ -85,6 +86,7 @@ public class AddTransactionActivity extends AppCompatActivity {
             String category = spinner.getSelectedItem().toString();
             String price = etPrice.getText().toString();
             String method = spinner_method.getSelectedItem().toString();
+            String desc = etDesc.getText().toString();
 
             boolean valid = true;
 
@@ -144,6 +146,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 dummy.put("category", category);
                 dummy.put("image", image);
                 dummy.put("method", method);
+                dummy.put("desc", desc);
 
                 db.collection("users").document(user.getUid()).collection("transactions").add(dummy).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override

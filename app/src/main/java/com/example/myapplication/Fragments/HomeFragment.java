@@ -215,6 +215,7 @@ public class HomeFragment extends Fragment {
                         String category = doc.getString("category");
                         String name = doc.getString("name");
                         String method = doc.getString("method");
+                        String desc = doc.getString("desc");
 
                         long price = 0;
 
@@ -246,7 +247,7 @@ public class HomeFragment extends Fragment {
                                 break;
                         }
 
-                        Transaction transaction = new Transaction(name, d, amount, id, category, method);
+                        Transaction transaction = new Transaction(name, d, amount, id, category, method, desc);
                         transactions.add(transaction);
                         mAdapter.notifyDataSetChanged();
                     }
