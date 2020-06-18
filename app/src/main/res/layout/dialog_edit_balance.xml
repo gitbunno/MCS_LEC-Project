@@ -15,7 +15,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
             android:inputType="number"
-            android:backgroundTint="@color/colorDisabledLight"
             android:drawableStart="@drawable/ic_monetization_on_black_24dp"
             style="@style/TIForm"/>
 
