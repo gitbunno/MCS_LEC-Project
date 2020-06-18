@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Activities.DetailActivity;
+import com.example.myapplication.Fragments.TransactionFragment;
 import com.example.myapplication.Objects.Transaction;
 import com.example.myapplication.R;
 
@@ -20,14 +23,16 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder>{
+public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> implements Filterable {
 
     private Context mContext;
     private ArrayList<Transaction> transactions;
+    private CustomFilter mFilter;
 
     public TransactionAdapter(Context context, ArrayList<Transaction> transactions){
         mContext = context;
         this.transactions = transactions;
+        mFilter = new CustomFilter(this);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -61,6 +66,8 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         final String date = transactions.get(position).getDate();
         final int id = transactions.get(position).getId();
         final String category = transactions.get(position).getCategory();
+        final String method = transactions.get(position).getMethod();
+        final String desc = transactions.get(position).getDesc();
         holder.tvName.setText(name);
         holder.tvPrice.setText(price);
         holder.tvDate.setText(date);
@@ -74,6 +81,8 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
                 intent.putExtra("price", price);
                 intent.putExtra("id", id);
                 intent.putExtra("category", category);
+                intent.putExtra("method", method);
+                intent.putExtra("desc", desc);
                 mContext.startActivity(intent);
             }
         });
@@ -100,4 +109,45 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     public int getItemCount() {
         return transactions.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return mFilter;
+    }
+
+    public class CustomFilter extends Filter {
+        public TransactionAdapter mAdapter;
+
+        public CustomFilter(TransactionAdapter mAdapter) {
+            super();
+            this.mAdapter = mAdapter;
+        }
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            TransactionFragment.temp.clear();
+            final FilterResults results = new FilterResults();
+            if (constraint.length() == 0) {
+                TransactionFragment.temp.addAll(TransactionFragment.transactions);
+            } else {
+                final String pattern = constraint.toString().toLowerCase().trim();
+                for(Transaction tran : TransactionFragment.transactions) {
+                    if(tran.getName().toLowerCase().trim().startsWith(pattern)) {
+                        TransactionFragment.temp.add(tran);
+                    }
+                }
+            }
+            results.values = TransactionFragment.temp;
+            results.count = TransactionFragment.temp.size();
+
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            this.mAdapter.notifyDataSetChanged();
+        }
+    }
+
 }

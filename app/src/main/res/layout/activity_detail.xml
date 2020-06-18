@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activities.DetailActivity"
     android:background="#ffb7c5"
+    android:id="@+id/detail_layout"
     android:padding="20dp">
     <ImageView
         android:id="@+id/detail_img_icon"
@@ -88,7 +89,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:text="Description"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
+            android:padding="9sp"
             android:textSize="18sp" />
     </LinearLayout>
 

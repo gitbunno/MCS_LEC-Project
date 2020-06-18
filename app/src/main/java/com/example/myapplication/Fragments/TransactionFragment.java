@@ -9,11 +9,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +55,8 @@ public class TransactionFragment extends Fragment {
     TransactionAdapter mAdapter;
     RecyclerView mRecyclerView;
     LinearLayoutManager mLinearLayoutManager;
-    ArrayList<Transaction> transactions = new ArrayList<>();
+    public static final ArrayList<Transaction> transactions = new ArrayList<>();
+    public static final ArrayList<Transaction> temp = new ArrayList<>();
     FirebaseAuth auth;
     FirebaseUser user;
     FirebaseFirestore db;
@@ -60,6 +64,7 @@ public class TransactionFragment extends Fragment {
     boolean allowRefresh;
     ProgressDialog progressDialog;
     TextView no;
+    EditText edit;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -107,6 +112,7 @@ public class TransactionFragment extends Fragment {
         user = auth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
 
+
 //        Transaction transaction = new Transaction("Box", "01/01/2000", "2.000.000", null);
 ////        Transaction transactiona = new Transaction("Boxs", "01/01/2000", "3.000.000", null);
 ////        transactions.add(transaction);
@@ -124,7 +130,7 @@ public class TransactionFragment extends Fragment {
                 android.R.color.transparent
         );
 
-        mAdapter = new TransactionAdapter(v.getContext(), transactions);
+        mAdapter = new TransactionAdapter(v.getContext(), temp);
         mLinearLayoutManager = new LinearLayoutManager(v.getContext());
         mRecyclerView = v.findViewById(R.id.transactions_rv_transactions);
         mRecyclerView.setHasFixedSize(true);
@@ -135,6 +141,24 @@ public class TransactionFragment extends Fragment {
 //        add.setOnClickListener(addListener);
 
         no = v.findViewById(R.id.transactions_tv_noitem);
+        edit = v.findViewById(R.id.search_bar_edit);
+
+        edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mAdapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 
 
@@ -171,6 +195,8 @@ public class TransactionFragment extends Fragment {
                         String d = DateFormat.format("dd", date) + "/" + DateFormat.format("MM", date) + "/" + DateFormat.format("yyyy", date);
                         String category = doc.getString("category");
                         String name = doc.getString("name");
+                        String method = doc.getString("method");
+                        String desc = doc.getString("desc");
                         long price = 0;
 
                         try {
@@ -200,8 +226,9 @@ public class TransactionFragment extends Fragment {
                                 break;
                         }
 
-                        Transaction transaction = new Transaction(name, d, amount, id, category);
+                        Transaction transaction = new Transaction(name, d, amount, id, category, method, desc);
                         transactions.add(transaction);
+                        temp.add(transaction);
                         mAdapter.notifyDataSetChanged();
                     }
                     progressDialog.dismiss();

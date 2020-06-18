@@ -119,7 +119,7 @@ public class WalletFragment extends Fragment {
 
         txtGreetings = v.findViewById(R.id.wallet_tv_greeting);
 
-        txtGreetings.setText("Hello, " + user.getDisplayName());
+//        txtGreetings.setText("Hello, " + user.getDisplayName());
 
         return v;
     }
@@ -127,6 +127,6 @@ public class WalletFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        txtGreetings.setText("Hello, " + user.getDisplayName());
+//        txtGreetings.setText("Hello, " + user.getDisplayName());
     }
 }

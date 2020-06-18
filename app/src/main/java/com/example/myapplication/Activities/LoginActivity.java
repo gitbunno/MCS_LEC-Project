@@ -159,6 +159,7 @@ public class LoginActivity extends AppCompatActivity {
     };
 
     void signIn() {
+
         Intent intent = mgGoogleSignInClient.getSignInIntent();
         startActivityForResult(intent, RC_SIGN_IN);
     }
@@ -194,7 +195,6 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             tilPassword.setError("Login failed");
                         }
-                        progressDialog.dismiss();
                     }
                 });
     }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity"
-    android:background="@color/colorDisabledLight">
+    android:background="@color/colorDisabledLight"
+   >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,15 +31,39 @@
             android:textColor="@color/colorBlack"
             android:visibility="gone"
             style="@style/CleanButtonInline"/>
-
+        <LinearLayout
+            android:id="@+id/Linear_transaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp"
+            android:layout_below="@id/transactions_tv_title"
+            android:weightSum="1">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/search_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/search_bar_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Search"
+                    android:drawableStart="@drawable/ic_search_black_24dp"
+                    style="@style/TIForm"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/transactions_rv_transactions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_transaction"
-            android:layout_below="@id/transactions_tv_title"/>
-
-
+            android:layout_below="@id/Linear_transaction"/>
     </RelativeLayout>
+
+
+
 
 </RelativeLayout>
