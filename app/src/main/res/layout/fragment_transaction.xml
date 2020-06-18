@@ -21,16 +21,6 @@
             android:text="@string/menu_transactions"
             style="@style/TVTitle"/>
 
-        <TextView
-            android:id="@+id/transactions_tv_noitem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/transactions_tv_title"
-            android:text="@string/no_transaction"
-            android:gravity="center"
-            android:textColor="@color/colorBlack"
-            android:visibility="gone"
-            style="@style/CleanButtonInline"/>
         <LinearLayout
             android:id="@+id/Linear_transaction"
             android:layout_width="match_parent"
@@ -39,13 +29,15 @@
             android:padding="2dp"
             android:paddingStart="7dp"
             android:paddingEnd="7dp"
+            style="@style/TVTitle"
             android:layout_below="@id/transactions_tv_title"
             android:weightSum="1">
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/search_bar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                android:layout_marginHorizontal="12dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/search_bar_edit"
                     android:layout_width="match_parent"
@@ -55,6 +47,18 @@
                     style="@style/TIForm"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/transactions_tv_noitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Linear_transaction"
+            android:text="@string/no_transaction"
+            android:gravity="center"
+            android:textColor="@color/colorBlack"
+            android:visibility="gone"
+            style="@style/CleanButtonInline"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/transactions_rv_transactions"
             android:layout_width="match_parent"
