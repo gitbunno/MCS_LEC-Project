@@ -184,6 +184,7 @@ public class TransactionFragment extends Fragment {
 //            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
 //        }
         transactions.clear();
+        temp.clear();
         CollectionReference cRef = db.collection("users").document(user.getUid()).collection("transactions");
         cRef.orderBy("timestamp", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
