@@ -100,6 +100,17 @@ public class WalletFragment extends Fragment {
                 android.R.color.transparent
         );
 
+        txtGreetings = v.findViewById(R.id.wallet_tv_greeting);
+
+//        txtGreetings.setText("Hello, " + user.getDisplayName());
+
+        return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        txtGreetings.setText("Hello, " + user.getDisplayName());
         DocumentReference ref = db.collection("users").document(user.getUid());
         ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -116,17 +127,5 @@ public class WalletFragment extends Fragment {
                 }
             }
         });
-
-        txtGreetings = v.findViewById(R.id.wallet_tv_greeting);
-
-//        txtGreetings.setText("Hello, " + user.getDisplayName());
-
-        return v;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-//        txtGreetings.setText("Hello, " + user.getDisplayName());
     }
 }
