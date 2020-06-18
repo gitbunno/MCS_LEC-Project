@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/item_transaction_img"
-            android:layout_below="@id/item_transaction_name"
+            android:layout_alignParentBottom="true"
             android:text="dd/mm/yyyy"
             android:textSize="7pt"/>
 
